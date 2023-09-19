@@ -35,10 +35,11 @@ func is_far_from(pos):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	
-	if following:
-		if is_far_from(following.position):
-			move_to(following.position, delta)
-		pass
+	if StateManager.game_running():
+		if following:
+			if is_far_from(following.position):
+				move_to(following.position, delta)
+			pass
+	pass
 	
 	pass

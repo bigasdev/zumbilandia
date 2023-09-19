@@ -31,6 +31,8 @@ func _move(delta):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if !StateManager.game_running(): return
+	
 	_moveInput()
 	_move(delta)
 	pass

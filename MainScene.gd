@@ -1,6 +1,6 @@
 extends Control
 
-onready var hud : Control = $HUD
+onready var hud : CanvasLayer = $HUD
 onready var menu : Control = $Menu
 
 # Declare member variables here. Examples:
@@ -29,5 +29,11 @@ func _load_game():
 
 func _on_Start_pressed():
 	_change_main_elements(false)
+	hud.visible = true
 	_load_game()
+	pass # Replace with function body.
+
+
+func _on_Pause_pressed():
+	StateManager.change_state(StateManager.States.PAUSE)
 	pass # Replace with function body.
