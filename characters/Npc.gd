@@ -4,6 +4,9 @@ export var moveSpeed : float
 export var attackSpeed : float
 export var damage : float
 
+# components
+onready var weapon : Sprite = $Weapon
+
 #following variables
 var following : KinematicBody2D
 const SMOOTH_SPEED = 1
@@ -15,6 +18,9 @@ var attacking : Node2D
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	following = Global.player
+	if weapon :
+		weapon.set_damage(damage)
+		pass
 	pass # Replace with function body.
 	
 # Function that will be used to make the npc follow the player

@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://characters/Npc.gd" type="Script" id=1]
 [ext_resource path="res://characters/sprites/npc.png" type="Texture" id=2]
+[ext_resource path="res://weapons/weapon.png" type="Texture" id=3]
+[ext_resource path="res://weapons/Weapon.gd" type="Script" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 40.5, 78.5 )
@@ -13,7 +15,10 @@ moveSpeed = 50.0
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 2 )
 
-[node name="Weapon" type="Node" parent="."]
+[node name="Weapon" type="Sprite" parent="."]
+position = Vector2( -17, 31 )
+texture = ExtResource( 3 )
+script = ExtResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
