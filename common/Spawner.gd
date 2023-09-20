@@ -21,6 +21,6 @@ func _ready():
 func _on_Timer_timeout():
 	if !StateManager.game_running(): return
 	
-	var npc = preload("res://characters/Npc.tscn")
-	add_child(npc.instance())
+	var zombie = preload("res://enemies/Zombie.tscn")
+	add_child(zombie.instance())
 	pass # Replace with function body.
