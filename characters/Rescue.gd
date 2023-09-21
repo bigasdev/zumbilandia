@@ -8,6 +8,8 @@ extends Node2D
 onready var npc : KinematicBody2D = $Npc
 onready var zombies : Array = [$Zombie, $Zombie2, $Zombie3, $Zombie4, $Zombie5, $Zombie6]
 
+onready var npc_object = preload("res://characters/Npc.tscn")
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -17,7 +19,14 @@ func player_rescue():
 		if is_instance_valid(i):
 			i.queue_free()
 		pass
-	npc.set_following(Global.player)
+	
+	var npc_instance = npc_object.instance()
+	npc_instance.position = npc.position
+	
+	npc.queue_free()
+	
+	get_node("/root/MainScene").add_child(npc_instance)
+	npc_instance.set_following(Global.player)
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
