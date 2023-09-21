@@ -19,6 +19,7 @@ var attacking : Node2D
 func _ready():
 	if weapon :
 		weapon.set_damage(damage)
+		weapon.bulletPos = $BulletPos
 		pass
 	pass # Replace with function body.
 	
