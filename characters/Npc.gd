@@ -36,7 +36,10 @@ func is_far_from(pos):
 		return true
 	else:
 		return false
-	
+
+func set_following(character):
+	following = character
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

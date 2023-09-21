@@ -11,7 +11,7 @@ position = Vector2( 276, 245 )
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 current = true
-zoom = Vector2( 2, 2 )
+zoom = Vector2( 2.5, 2.5 )
 smoothing_enabled = true
 smoothing_speed = 2.0
 
@@ -22,10 +22,10 @@ script = ExtResource( 3 )
 wait_time = 5.0
 autostart = true
 
+[node name="Rescue2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1057, 573 )
+
 [node name="Rescue" parent="." instance=ExtResource( 2 )]
 position = Vector2( -278, -40 )
-
-[node name="Rescue" parent="Rescue" instance=ExtResource( 2 )]
-position = Vector2( 1335, 613 )
 
 [connection signal="timeout" from="Spawner/Timer" to="Spawner" method="_on_Timer_timeout"]
