@@ -17,7 +17,6 @@ var attacking : Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	following = Global.player
 	if weapon :
 		weapon.set_damage(damage)
 		pass

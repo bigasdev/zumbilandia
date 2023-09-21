@@ -6,11 +6,15 @@ extends KinematicBody2D
 # var b = "text"
 
 export var offset : Vector2
+export var staticPos : bool
 
 var rng = RandomNumberGenerator.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	
+	if staticPos :
+		return
 	
 	# get a random position based in an offset around the player
 	rng.randomize()
