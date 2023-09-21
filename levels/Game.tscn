@@ -18,6 +18,7 @@ smoothing_speed = 2.0
 script = ExtResource( 3 )
 
 [node name="Timer" type="Timer" parent="Spawner"]
+wait_time = 5.0
 autostart = true
 
 [connection signal="timeout" from="Spawner/Timer" to="Spawner" method="_on_Timer_timeout"]

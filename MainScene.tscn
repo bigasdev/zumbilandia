@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://MainScene.gd" type="Script" id=1]
+[ext_resource path="res://common/GlobalInput.gd" type="Script" id=2]
 
 [node name="MainScene" type="Control"]
 anchor_right = 1.0
@@ -34,6 +35,9 @@ margin_top = 276.0
 margin_right = 592.0
 margin_bottom = 319.0
 text = "Start Game"
+
+[node name="GlobalInput" type="Node" parent="."]
+script = ExtResource( 2 )
 
 [connection signal="pressed" from="HUD/Pause" to="." method="_on_Pause_pressed"]
 [connection signal="pressed" from="Menu/Start" to="." method="_on_Start_pressed"]
