@@ -6,10 +6,11 @@ extends Node
 # var b = "text"
 
 # The object we need to instante
-
+export var night_time_amount = 25
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	Global.spawner = self
 	pass # Replace with function body.
 
 
@@ -24,3 +25,11 @@ func _on_Timer_timeout():
 	var zombie = preload("res://enemies/Zombie.tscn")
 	add_child(zombie.instance())
 	pass # Replace with function body.
+
+func night_time():
+	var i = 0
+	while i < night_time_amount:
+		var zombie = preload("res://enemies/Zombie.tscn")
+		add_child(zombie.instance())
+		i += 1
+	pass

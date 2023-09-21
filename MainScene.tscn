@@ -18,6 +18,17 @@ margin_right = 1008.0
 margin_bottom = 46.0
 text = "Pause"
 
+[node name="Counter" type="Label" parent="HUD"]
+margin_left = 832.0
+margin_top = 14.0
+margin_right = 1028.0
+margin_bottom = 62.0
+rect_scale = Vector2( 2, 2 )
+text = "00:00"
+
+[node name="Timer" type="Timer" parent="HUD/Counter"]
+wait_time = 30.0
+
 [node name="Menu" type="Control" parent="."]
 margin_right = 40.0
 margin_bottom = 40.0
@@ -40,4 +51,5 @@ text = "Start Game"
 script = ExtResource( 2 )
 
 [connection signal="pressed" from="HUD/Pause" to="." method="_on_Pause_pressed"]
+[connection signal="timeout" from="HUD/Counter/Timer" to="." method="_on_Timer_timeout"]
 [connection signal="pressed" from="Menu/Start" to="." method="_on_Start_pressed"]
