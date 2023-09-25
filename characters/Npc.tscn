@@ -11,6 +11,7 @@ extents = Vector2( 18.5, 25 )
 [node name="Npc" type="KinematicBody2D"]
 script = ExtResource( 1 )
 moveSpeed = 50.0
+player_range = 80.0
 
 [node name="Sprite" type="Sprite" parent="."]
 scale = Vector2( 3, 3 )

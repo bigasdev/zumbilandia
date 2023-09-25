@@ -3,6 +3,7 @@ extends KinematicBody2D
 export var moveSpeed : float
 export var attackSpeed : float
 export var damage : float
+export var player_range : float = 100
 
 # components
 onready var weapon : Sprite = $Weapon
@@ -33,7 +34,7 @@ func move_to(pos, delta):
 	pass
 	
 func is_far_from(pos):
-	if pos.distance_to(position) > 190:
+	if pos.distance_to(position) > player_range:
 		return true
 	else:
 		return false
