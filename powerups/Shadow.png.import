@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Npc.png-89187e2b88c531fd74219f20e24b934f.stex"
+path="res://.import/Shadow.png-3e8cc405929d273c28a6880452f78087.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://characters/sprites/Npc.png"
-dest_files=[ "res://.import/Npc.png-89187e2b88c531fd74219f20e24b934f.stex" ]
+source_file="res://powerups/Shadow.png"
+dest_files=[ "res://.import/Shadow.png-3e8cc405929d273c28a6880452f78087.stex" ]
 
 [params]
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Npc.png-89187e2b88c531fd74219f20e24b934f.stex"
+path="res://.import/Heart.png-7291542895f8619e274e39e0ae9abe26.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://characters/sprites/Npc.png"
-dest_files=[ "res://.import/Npc.png-89187e2b88c531fd74219f20e24b934f.stex" ]
+source_file="res://powerups/Heart.png"
+dest_files=[ "res://.import/Heart.png-7291542895f8619e274e39e0ae9abe26.stex" ]
 
 [params]
 

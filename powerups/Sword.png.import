@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Npc.png-89187e2b88c531fd74219f20e24b934f.stex"
+path="res://.import/Sword.png-84115dd6bf7e9cbbfec9e6032c486f12.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://characters/sprites/Npc.png"
-dest_files=[ "res://.import/Npc.png-89187e2b88c531fd74219f20e24b934f.stex" ]
+source_file="res://powerups/Sword.png"
+dest_files=[ "res://.import/Sword.png-84115dd6bf7e9cbbfec9e6032c486f12.stex" ]
 
 [params]
 
