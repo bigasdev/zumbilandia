@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 60, 60.75 )
 
-[node name="Zombie" type="KinematicBody2D"]
+[node name="Zombie" type="KinematicBody2D" groups=["Zombie"]]
 script = ExtResource( 2 )
 offset = Vector2( 1300, 1300 )
 

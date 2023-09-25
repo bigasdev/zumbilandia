@@ -23,6 +23,9 @@ func _ready():
 	position = Global.player.position + Vector2(offset_x, offset_y)
 	pass # Replace with function body.
 
+func kill():
+	print_debug("test")
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

@@ -27,6 +27,7 @@ func shoot():
 	var bullet_instance = bullet.instance()
 	
 	get_node("/root/MainScene").add_child(bullet_instance)
+	bullet_instance.direction = (get_global_mouse_position() - Global.player.global_position).normalized()
 	bullet_instance.position = bulletPos.global_position
 	pass
 
