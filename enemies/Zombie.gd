@@ -24,7 +24,7 @@ func _ready():
 	pass # Replace with function body.
 
 func kill():
-	print_debug("test")
+	queue_free()
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

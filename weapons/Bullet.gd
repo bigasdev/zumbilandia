@@ -24,8 +24,8 @@ func _physics_process(delta):
 	pass
 
 func _on_Bullet_body_entered(body):
-	print_debug("a mandinha e linda")
 	if body.is_in_group("Zombie"):
-		body.get_script("Zombie").kill()
+		body.kill()
 		pass
 	pass # Replace with function body.
+
