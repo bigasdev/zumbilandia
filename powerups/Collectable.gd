@@ -56,8 +56,25 @@ func _move_coin(delta):
 		pass
 	collectable_sprite.position = Vector2(collectable_sprite.position.x, original_y_pos + y_pos)
 	pass
+	
+func collect():
+	if type == CollectableType.POWER:
+		PowerupManager.power_powerup += 1
+		pass
+	if type == CollectableType.SPEED:
+		PowerupManager.speed_powerup += 10
+		pass
+	queue_free()
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	_move_coin(delta)
 	pass
+
+
+func _on_Collectable_body_entered(body):
+	if body.is_in_group("Player"):
+		collect()
+		pass
+	pass # Replace with function body.

@@ -27,6 +27,7 @@ func player_rescue():
 	
 	get_node("/root/MainScene").add_child(npc_instance)
 	npc_instance.set_following(Global.player)
+	queue_free()
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

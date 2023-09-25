@@ -22,7 +22,7 @@ func _moveInput():
 		velocity.y -= 1
 	if Input.is_action_pressed("move_down"):
 		velocity.y += 1
-	velocity = velocity.normalized() * moveSpeed
+	velocity = velocity.normalized() * (moveSpeed + PowerupManager.speed_powerup)
 	pass
 
 func _move(delta):

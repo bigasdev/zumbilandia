@@ -7,8 +7,9 @@ extends Sprite
 
 export var damage : float
 export var is_player_weapon : bool
+export var radius : float = 5
 
-var bulletPos : Position2D
+onready var bulletPos = $BulletPos
 
 # bullet object
 onready var bullet = preload("res://weapons/Bullet.tscn")
@@ -30,6 +31,23 @@ func shoot():
 	bullet_instance.direction = (get_global_mouse_position() - Global.player.global_position).normalized()
 	bullet_instance.position = bulletPos.global_position
 	pass
+	
+func _rotate_mouse():
+	var mouse_pos = get_global_mouse_position()
+	var player_pos = Global.player.transform.origin
+	var distance = player_pos.distance_to(mouse_pos) 
+	var mouse_dir = (mouse_pos-player_pos).normalized()
+	if distance > radius:
+		mouse_pos = player_pos + (mouse_dir * radius)
+	
+	if mouse_dir.y <= -.35:
+		z_index = -1
+		pass
+	else:
+		z_index = 0
+		pass
+	global_transform.origin = mouse_pos
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -37,5 +55,5 @@ func _process(delta):
 	
 	if Input.is_action_just_pressed("player_shoot"): shoot()
 	
-	look_at(get_global_mouse_position())
+	_rotate_mouse()
 	pass
