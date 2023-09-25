@@ -21,11 +21,11 @@ func player_rescue():
 		pass
 	
 	var npc_instance = npc_object.instance()
-	npc_instance.position = npc.position
+	npc_instance.position = npc.global_position
 	
 	npc.queue_free()
 	
-	get_node("/root/MainScene").add_child(npc_instance)
+	get_node("/root/MainScene/Game").add_child(npc_instance)
 	npc_instance.set_following(Global.player)
 	queue_free()
 	pass
