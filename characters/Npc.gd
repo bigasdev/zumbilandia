@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 export var moveSpeed : float
 export var attackSpeed : float
-export var damage : float
+export var damage : int
 export var player_range : float = 100
 
 # components

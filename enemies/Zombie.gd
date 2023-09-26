@@ -9,6 +9,10 @@ export var offset : Vector2
 export var staticPos : bool
 
 var rng = RandomNumberGenerator.new()
+export var health : int = 10
+
+# Components
+onready var animation = $AnimationPlayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -23,8 +27,12 @@ func _ready():
 	position = Global.player.position + Vector2(offset_x, offset_y)
 	pass # Replace with function body.
 
-func kill():
-	queue_free()
+func damage(dmg:int):
+	health -= dmg
+	animation.play("Blink")
+	if health <= 0:
+		queue_free()
+		pass
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -25,7 +25,8 @@ func _physics_process(delta):
 
 func _on_Bullet_body_entered(body):
 	if body.is_in_group("Zombie"):
-		body.kill()
+		body.damage(Global.player.damage + PowerupManager.power_powerup)
+		queue_free()
 		pass
 	pass # Replace with function body.
 

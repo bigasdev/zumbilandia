@@ -75,6 +75,7 @@ func _process(delta):
 
 func _on_Collectable_body_entered(body):
 	if body.is_in_group("Player"):
+		body.collect()
 		collect()
 		pass
 	pass # Replace with function body.

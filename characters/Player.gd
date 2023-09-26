@@ -7,6 +7,9 @@ extends "res://characters/Npc.gd"
 
 var velocity = Vector2()
 
+# Components
+onready var animation = $AnimationPlayer
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Global.player = self
@@ -27,6 +30,11 @@ func _moveInput():
 
 func _move(delta):
 	move_and_slide(velocity)
+	pass
+	
+# Called when collecting powerup/coins
+func collect():
+	animation.play("Collect")
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
