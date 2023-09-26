@@ -1,7 +1,25 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://MainScene.gd" type="Script" id=1]
 [ext_resource path="res://common/GlobalInput.gd" type="Script" id=2]
+[ext_resource path="res://hud/play.png" type="Texture" id=3]
+[ext_resource path="res://hud/play_high.png" type="Texture" id=4]
+[ext_resource path="res://hud/exit.png" type="Texture" id=5]
+[ext_resource path="res://hud/exit_high.png" type="Texture" id=6]
+[ext_resource path="res://hud/clock.png" type="Texture" id=7]
+[ext_resource path="res://hud/main_hud.png" type="Texture" id=8]
+[ext_resource path="res://hud/Monocraft.ttf" type="DynamicFontData" id=9]
+
+[sub_resource type="CanvasItemMaterial" id=3]
+
+[sub_resource type="DynamicFontData" id=1]
+antialiased = false
+hinting = 0
+
+[sub_resource type="DynamicFont" id=2]
+size = 18
+font_data = ExtResource( 9 )
+fallback/0 = SubResource( 1 )
 
 [node name="MainScene" type="Control"]
 anchor_right = 1.0
@@ -18,34 +36,64 @@ margin_right = 1008.0
 margin_bottom = 46.0
 text = "Pause"
 
+[node name="Clock" type="TextureRect" parent="HUD"]
+margin_left = 414.0
+margin_top = 4.0
+margin_right = 437.0
+margin_bottom = 26.0
+rect_scale = Vector2( 3, 3 )
+texture = ExtResource( 7 )
+stretch_mode = 6
+
 [node name="Counter" type="Label" parent="HUD"]
-margin_left = 832.0
-margin_top = 14.0
-margin_right = 1028.0
-margin_bottom = 62.0
+material = SubResource( 3 )
+margin_left = 487.0
+margin_top = 16.0
+margin_right = 683.0
+margin_bottom = 64.0
 rect_scale = Vector2( 2, 2 )
+custom_fonts/font = SubResource( 2 )
 text = "00:00"
 
 [node name="Timer" type="Timer" parent="HUD/Counter"]
 wait_time = 30.0
 
+[node name="TextureRect" type="TextureRect" parent="HUD"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 117.0
+margin_bottom = 114.0
+texture = ExtResource( 8 )
+expand = true
+stretch_mode = 6
+
 [node name="Menu" type="Control" parent="."]
 margin_right = 40.0
 margin_bottom = 40.0
 
-[node name="Exit" type="Button" parent="Menu"]
+[node name="Exit" type="TextureButton" parent="Menu"]
 margin_left = 414.0
 margin_top = 326.0
 margin_right = 591.0
 margin_bottom = 369.0
-text = "Exit"
+texture_normal = ExtResource( 5 )
+texture_pressed = ExtResource( 6 )
+texture_hover = ExtResource( 6 )
+texture_focused = ExtResource( 6 )
+expand = true
+stretch_mode = 5
 
-[node name="Start" type="Button" parent="Menu"]
+[node name="Start" type="TextureButton" parent="Menu"]
 margin_left = 415.0
 margin_top = 276.0
 margin_right = 592.0
 margin_bottom = 319.0
-text = "Start Game"
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 4 )
+texture_hover = ExtResource( 4 )
+texture_focused = ExtResource( 4 )
+expand = true
+stretch_mode = 5
 
 [node name="GlobalInput" type="Node" parent="."]
 script = ExtResource( 2 )
