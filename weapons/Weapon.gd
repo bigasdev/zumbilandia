@@ -29,10 +29,10 @@ func shoot():
 	
 	if is_player_weapon:
 		Global.player_ammo -= 1
-		Global.hud.update_hud()
 		
 		if Global.player_ammo <= 0:
 			return
+		Global.hud.update_hud()
 		pass
 	
 	get_node("/root/MainScene").add_child(bullet_instance)
