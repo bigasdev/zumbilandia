@@ -27,6 +27,14 @@ func set_damage(damage):
 func shoot():
 	var bullet_instance = bullet.instance()
 	
+	if is_player_weapon:
+		Global.player_ammo -= 1
+		Global.hud.update_hud()
+		
+		if Global.player_ammo <= 0:
+			return
+		pass
+	
 	get_node("/root/MainScene").add_child(bullet_instance)
 	bullet_instance.direction = (get_global_mouse_position() - Global.player.global_position).normalized()
 	bullet_instance.position = bulletPos.global_position

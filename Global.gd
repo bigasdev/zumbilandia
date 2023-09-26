@@ -3,6 +3,11 @@ extends Node
 var main_scene
 var player : KinematicBody2D
 var spawner : Node
+var hud : CanvasLayer
+
+var player_health : int = 100
+var player_ammo : int = 200
+var player_coins : int = 0
 
 # Declare member variables here. Examples:
 # var a = 2

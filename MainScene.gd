@@ -29,7 +29,7 @@ func _load_game():
 	pass
 
 func _change_counter():
-	counter.text = String(counter_timer.time_left).pad_decimals(1)
+	counter.text = String(counter_timer.time_left).pad_decimals(0)
 	pass
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 
