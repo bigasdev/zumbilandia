@@ -26,6 +26,15 @@ func _on_Timer_timeout():
 	add_child(zombie.instance())
 	pass # Replace with function body.
 
+func _on_CollectableTimer_timeout():
+	if !StateManager.game_running(): return
+	
+	var collectable = preload("res://powerups/Collectable.tscn")
+	collectable.randomize_spawn()
+	add_child(collectable.instance())
+	pass # Replace with function body.
+
+
 func night_time():
 	var i = 0
 	while i < night_time_amount:

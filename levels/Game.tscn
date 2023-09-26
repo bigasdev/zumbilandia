@@ -24,6 +24,10 @@ script = ExtResource( 3 )
 wait_time = 5.0
 autostart = true
 
+[node name="CollectableTimer" type="Timer" parent="Spawner"]
+wait_time = 5.0
+autostart = true
+
 [node name="Rescue2" parent="." instance=ExtResource( 2 )]
 position = Vector2( 1057, 573 )
 
@@ -56,4 +60,23 @@ type = 1
 position = Vector2( 129, 287 )
 type = 1
 
+[node name="Collectable7" parent="." instance=ExtResource( 5 )]
+position = Vector2( 417, 336 )
+type = 1
+
+[node name="Collectable8" parent="." instance=ExtResource( 5 )]
+position = Vector2( 24, 236 )
+type = 1
+
+[node name="Collectable9" parent="." instance=ExtResource( 5 )]
+position = Vector2( 228, 343 )
+type = 1
+
+[node name="Collectable10" parent="." instance=ExtResource( 5 )]
+position = Vector2( 264, 74 )
+
+[node name="Collectable11" parent="." instance=ExtResource( 5 )]
+position = Vector2( 173, 84 )
+
 [connection signal="timeout" from="Spawner/Timer" to="Spawner" method="_on_Timer_timeout"]
+[connection signal="timeout" from="Spawner/CollectableTimer" to="Spawner" method="_on_Timer_timeout"]

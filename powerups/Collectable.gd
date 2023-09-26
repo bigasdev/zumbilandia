@@ -1,6 +1,6 @@
 extends Area2D
 
-enum CollectableType {POWER, SPEED, HEART}
+enum CollectableType {POWER = 0, SPEED = 1, HEART = 2}
 
 export(CollectableType) var type
 onready var boots_sprite = preload("res://powerups/Boots.png")
@@ -9,9 +9,12 @@ onready var heart_sprite = preload("res://powerups/Heart.png")
 
 onready var collectable_sprite = $Sprite
 
+var rng = RandomNumberGenerator.new()
+
 # Polish
 export var y_pos_limit : float = .5
 export var float_speed : float = 3
+export var random_pos_offset : Vector2
 
 var original_y_pos : float
 var y_pos : float = 0
@@ -39,6 +42,17 @@ func _change_icon():
 	if type == CollectableType.HEART:
 		collectable_sprite.texture = heart_sprite
 		pass
+	pass
+	
+# Function to randomize the spawn
+func randomize_spawn():
+	rng.randomize()
+	var offset_x = rng.randf_range(-random_pos_offset.x, random_pos_offset.x)
+	var offset_y = rng.randf_range(-random_pos_offset.y, random_pos_offset.y)
+	var collectable_type = rng.randf_range(0,2)
+	type = CollectableType[collectable_type]
+	position = Global.player.position + Vector2(offset_x, offset_y)
+	_change_icon()
 	pass
 
 func _move_coin(delta):
