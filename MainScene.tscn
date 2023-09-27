@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://MainScene.gd" type="Script" id=1]
 [ext_resource path="res://common/GlobalInput.gd" type="Script" id=2]
@@ -7,6 +7,11 @@
 [ext_resource path="res://hud/exit.png" type="Texture" id=5]
 [ext_resource path="res://hud/exit_high.png" type="Texture" id=6]
 [ext_resource path="res://hud/HUD.tscn" type="PackedScene" id=7]
+[ext_resource path="res://hud/Monocraft.ttf" type="DynamicFontData" id=8]
+
+[sub_resource type="DynamicFont" id=1]
+size = 18
+font_data = ExtResource( 8 )
 
 [node name="MainScene" type="Control"]
 anchor_right = 1.0
@@ -43,6 +48,15 @@ texture_hover = ExtResource( 4 )
 texture_focused = ExtResource( 4 )
 expand = true
 stretch_mode = 5
+
+[node name="Label" type="Label" parent="Menu"]
+margin_left = 316.0
+margin_top = 575.0
+margin_right = 694.0
+margin_bottom = 602.0
+custom_fonts/font = SubResource( 1 )
+text = "bigasdev @ mandinhart"
+align = 1
 
 [node name="GlobalInput" type="Node" parent="."]
 script = ExtResource( 2 )

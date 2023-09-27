@@ -12,6 +12,7 @@ y_pos_limit = 3.0
 float_speed = 8.0
 
 [node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 1, 0 )
 scale = Vector2( 3, 3 )
 texture = ExtResource( 1 )
 

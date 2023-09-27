@@ -39,5 +39,9 @@ func _on_Bullet_body_entered(body):
 		body.damage(Global.player.damage + PowerupManager.power_powerup)
 		queue_free()
 		pass
+	if body.is_in_group("Breakable"):
+		body.destroy()
+		queue_free()
+		pass
 	pass # Replace with function body.
 

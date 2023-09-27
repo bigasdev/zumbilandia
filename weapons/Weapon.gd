@@ -55,6 +55,13 @@ func _rotate_mouse():
 		z_index = 0
 		pass
 	global_transform.origin = mouse_pos
+	if mouse_dir.x <= 0:
+		flip_v = true
+		pass
+	else: 
+		flip_v = false
+		pass
+	rotation = get_parent().get_local_mouse_position().angle() + 270
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

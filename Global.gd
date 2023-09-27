@@ -30,7 +30,7 @@ func get_entity_rnd_radius(entity, radius:=Vector2(0,0), offset:=Vector2(0,0)) -
 	rng.randomize()
 	var offset_x = rng.randf_range(-offset.x, offset.x)
 	var offset_y = rng.randf_range(-offset.y, offset.y)
-	vector = Vector2(entity.position.x + offset_x, entity.position.y + offset_y)
+	vector = Vector2(entity.global_position.x + offset_x, entity.global_position.y + offset_y)
 	return vector
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

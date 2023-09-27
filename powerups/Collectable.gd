@@ -1,11 +1,12 @@
 extends Area2D
 
-enum CollectableType {POWER = 0, SPEED = 1, HEART = 2}
+enum CollectableType {POWER = 0, SPEED = 1, AMMO = 2, HEART = 3}
 
 export(CollectableType) var type
 onready var boots_sprite = preload("res://powerups/Boots.png")
 onready var sword_sprite = preload("res://powerups/Sword.png")
 onready var heart_sprite = preload("res://powerups/Heart.png")
+onready var ammo_sprite = preload("res://powerups/Ammo.png")
 
 onready var collectable_sprite = $Sprite
 
@@ -39,21 +40,30 @@ func _change_icon():
 	if type == CollectableType.SPEED:
 		collectable_sprite.texture = boots_sprite
 		pass
+	if type == CollectableType.AMMO:
+		collectable_sprite.texture = ammo_sprite
+		pass
 	if type == CollectableType.HEART:
 		collectable_sprite.texture = heart_sprite
 		pass
 	pass
 	
 # Function to randomize the spawn
-func randomize_spawn():
-	rng.randomize()
-	var offset_x = rng.randf_range(-random_pos_offset.x, random_pos_offset.x)
-	var offset_y = rng.randf_range(-random_pos_offset.y, random_pos_offset.y)
-	var collectable_type = rng.randf_range(0,2)
-	type = CollectableType[collectable_type]
-	position = Global.player.position + Vector2(offset_x, offset_y)
+func randomize_spawn(rnd_pos:bool=false):
+	if rnd_pos:
+		rng.randomize()
+		var offset_x = rng.randf_range(-random_pos_offset.x, random_pos_offset.x)
+		var offset_y = rng.randf_range(-random_pos_offset.y, random_pos_offset.y)
+		position = Global.player.position + Vector2(offset_x, offset_y)
+		pass
+	type = CollectableType.values()[randi() % CollectableType.size()]
 	_change_icon()
 	pass
+	
+# Function to determine the type
+func set_type(type) -> void:
+	self.type = CollectableType.values()[2]
+	_change_icon()
 
 func _move_coin(delta):
 	if float_state_up:
@@ -77,6 +87,10 @@ func collect():
 		pass
 	if type == CollectableType.SPEED:
 		PowerupManager.speed_powerup += 10
+		pass
+	if type == CollectableType.AMMO:
+		Global.player_ammo += 50
+		Global.hud.update_hud()
 		pass
 	queue_free()
 	pass

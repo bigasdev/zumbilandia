@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://characters/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://characters/Rescue.tscn" type="PackedScene" id=2]
 [ext_resource path="res://common/Spawner.gd" type="Script" id=3]
 [ext_resource path="res://common/Coin.tscn" type="PackedScene" id=4]
 [ext_resource path="res://powerups/Collectable.tscn" type="PackedScene" id=5]
+[ext_resource path="res://common/Breakable.tscn" type="PackedScene" id=6]
 
 [node name="Game" type="Node"]
 
@@ -81,6 +82,12 @@ position = Vector2( 264, 74 )
 
 [node name="Collectable11" parent="." instance=ExtResource( 5 )]
 position = Vector2( 173, 84 )
+
+[node name="Breakable" parent="." instance=ExtResource( 6 )]
+
+[node name="Breakable2" parent="." instance=ExtResource( 6 )]
+position = Vector2( 85, 18 )
+type = 1
 
 [connection signal="timeout" from="Spawner/Timer" to="Spawner" method="_on_Timer_timeout"]
 [connection signal="timeout" from="Spawner/CollectableTimer" to="Spawner" method="_on_Timer_timeout"]

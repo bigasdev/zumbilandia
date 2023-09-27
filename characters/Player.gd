@@ -13,7 +13,6 @@ var current_followers := 0
 var is_moving := false
 
 # Components
-onready var sprite := $Sprite
 onready var animation = $AnimationPlayer
 
 # Called when the node enters the scene tree for the first time.
@@ -41,7 +40,6 @@ func _moveInput():
 	pass
 	
 func _move_animations() -> void:
-	print_debug(is_moving)
 	if is_moving:
 		sprite.play("walking")
 	else:

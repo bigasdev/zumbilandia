@@ -7,6 +7,7 @@ export var player_range : float = 100
 
 # components
 onready var weapon : Sprite = $Weapon
+onready var sprite := $Sprite
 
 #following variables
 var following : KinematicBody2D
@@ -29,6 +30,7 @@ func move_to(pos, delta):
 	position_difference = pos - position
 	smoothed_velocity = position_difference * SMOOTH_SPEED * delta
 	
+	sprite.play("walking")
 	position += smoothed_velocity
 	pass
 	
@@ -36,6 +38,7 @@ func is_far_from(pos):
 	if pos.distance_to(position) > player_range:
 		return true
 	else:
+		sprite.play("idle")
 		return false
 
 func set_following(character):
