@@ -39,3 +39,15 @@ func _move_coin(delta):
 func _process(delta):
 	_move_coin(delta)
 	pass
+	
+func _collect() -> void:
+	Global.player_coins += 1
+	Global.hud.update_hud()
+	queue_free()
+
+
+func _on_Coin_body_entered(body):
+	if body.is_in_group("Player"):
+		_collect()
+		body.collect()
+	pass # Replace with function body.

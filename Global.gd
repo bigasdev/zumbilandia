@@ -25,12 +25,12 @@ func night_time():
 	spawner.night_time()
 	pass
 	
-func get_player_rnd_radius(radius:=Vector2(0,0), offset:=Vector2(0,0)) -> Vector2:
+func get_entity_rnd_radius(entity, radius:=Vector2(0,0), offset:=Vector2(0,0)) -> Vector2:
 	var vector := Vector2(0,0)
 	rng.randomize()
 	var offset_x = rng.randf_range(-offset.x, offset.x)
 	var offset_y = rng.randf_range(-offset.y, offset.y)
-	vector = Vector2(player.position.x + offset_x, player.position.y + offset_y)
+	vector = Vector2(entity.position.x + offset_x, entity.position.y + offset_y)
 	return vector
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

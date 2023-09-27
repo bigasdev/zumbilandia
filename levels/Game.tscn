@@ -11,7 +11,6 @@
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 276, 245 )
 player_range = 100.0
-max_followers = 10
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 current = true
