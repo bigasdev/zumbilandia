@@ -9,6 +9,8 @@ var player_health : int = 100
 var player_ammo : int = 200
 var player_coins : int = 0
 
+var rng = RandomNumberGenerator.new()
+
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -22,6 +24,14 @@ func night_time():
 	print_debug("its night time!")
 	spawner.night_time()
 	pass
+	
+func get_player_rnd_radius(radius:=Vector2(0,0), offset:=Vector2(0,0)) -> Vector2:
+	var vector := Vector2(0,0)
+	rng.randomize()
+	var offset_x = rng.randf_range(-offset.x, offset.x)
+	var offset_y = rng.randf_range(-offset.y, offset.y)
+	vector = Vector2(player.position.x + offset_x, player.position.y + offset_y)
+	return vector
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

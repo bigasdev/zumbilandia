@@ -8,7 +8,6 @@ extends KinematicBody2D
 export var offset : Vector2
 export var staticPos : bool
 
-var rng = RandomNumberGenerator.new()
 export var health : int = 10
 export var moveSpeed := 450
 
@@ -22,10 +21,7 @@ func _ready():
 		return
 	
 	# get a random position based in an offset around the player
-	rng.randomize()
-	var offset_x = rng.randf_range(-offset.x, offset.x)
-	var offset_y = rng.randf_range(-offset.y, offset.y)
-	position = Global.player.position + Vector2(offset_x, offset_y)
+	position = Global.get_player_rnd_radius(Vector2.ZERO, offset)
 	pass # Replace with function body.
 
 func damage(dmg:int):
