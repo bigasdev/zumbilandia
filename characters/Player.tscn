@@ -23,6 +23,7 @@ tracks/0/keys = {
 script = ExtResource( 2 )
 moveSpeed = 250.0
 damage = 1
+max_followers = 10
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource( 3 )

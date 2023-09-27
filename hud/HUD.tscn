@@ -50,7 +50,7 @@ custom_fonts/font = SubResource( 2 )
 text = "00:00"
 
 [node name="Timer" type="Timer" parent="Counter"]
-wait_time = 30.0
+wait_time = 15.0
 
 [node name="Components" type="TextureRect" parent="."]
 margin_left = 8.0
@@ -87,3 +87,5 @@ margin_bottom = 98.0
 custom_colors/font_color = Color( 1, 0.784314, 0.145098, 1 )
 custom_fonts/font = SubResource( 4 )
 text = "000"
+
+[connection signal="timeout" from="Counter/Timer" to="." method="_on_Timer_timeout"]

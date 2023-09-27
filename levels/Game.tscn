@@ -11,6 +11,7 @@
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 276, 245 )
 player_range = 100.0
+max_followers = 10
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 current = true
@@ -21,12 +22,16 @@ smoothing_speed = 2.0
 script = ExtResource( 3 )
 
 [node name="Timer" type="Timer" parent="Spawner"]
-wait_time = 5.0
+wait_time = 0.25
 autostart = true
 
 [node name="CollectableTimer" type="Timer" parent="Spawner"]
 wait_time = 5.0
 autostart = true
+
+[node name="NightTimer" type="Timer" parent="Spawner"]
+wait_time = 10.0
+one_shot = true
 
 [node name="Rescue2" parent="." instance=ExtResource( 2 )]
 position = Vector2( 1057, 573 )
@@ -80,3 +85,4 @@ position = Vector2( 173, 84 )
 
 [connection signal="timeout" from="Spawner/Timer" to="Spawner" method="_on_Timer_timeout"]
 [connection signal="timeout" from="Spawner/CollectableTimer" to="Spawner" method="_on_Timer_timeout"]
+[connection signal="timeout" from="Spawner/NightTimer" to="Spawner" method="_on_NightTimer_timeout"]

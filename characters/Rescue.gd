@@ -26,7 +26,7 @@ func player_rescue():
 	npc.queue_free()
 	
 	get_node("/root/MainScene/Game").add_child(npc_instance)
-	npc_instance.set_following(Global.player)
+	Global.player.rescue(npc_instance)
 	queue_free()
 	pass
 

@@ -25,3 +25,8 @@ func update_hud():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+
+func _on_Timer_timeout():
+	Global.night_time()
+	pass # Replace with function body.

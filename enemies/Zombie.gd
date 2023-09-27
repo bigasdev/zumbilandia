@@ -10,6 +10,7 @@ export var staticPos : bool
 
 var rng = RandomNumberGenerator.new()
 export var health : int = 10
+export var moveSpeed := 450
 
 # Components
 onready var animation = $AnimationPlayer

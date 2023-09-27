@@ -7,6 +7,10 @@ extends "res://characters/Npc.gd"
 
 var velocity = Vector2()
 
+# Variables
+export var max_followers := 10
+var current_followers := 0
+
 # Components
 onready var animation = $AnimationPlayer
 
@@ -36,6 +40,12 @@ func _move(delta):
 func collect():
 	animation.play("Collect")
 	pass
+	
+# Called when rescuing an npc
+func rescue(npc: KinematicBody2D) -> void:
+	current_followers += 1
+	if current_followers < max_followers:
+		npc.set_following(self)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
