@@ -45,7 +45,7 @@ func _move_animations() -> void:
 	else:
 		sprite.play("idle")
 
-func _move(delta):
+func _move():
 	move_and_slide(velocity)
 	pass
 	
@@ -66,7 +66,7 @@ func _process(delta):
 	
 	_moveInput()
 	_move_animations()
-	_move(delta)
+	_move()
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

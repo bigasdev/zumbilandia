@@ -35,6 +35,7 @@ func _process(delta) -> void:
 		queue_free()
 
 func _on_Bullet_body_entered(body):
+	print_debug(body)
 	if body.is_in_group("Zombie"):
 		body.damage(Global.player.damage + PowerupManager.power_powerup)
 		queue_free()

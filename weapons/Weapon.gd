@@ -28,6 +28,7 @@ func shoot():
 	var bullet_instance = bullet.instance()
 	
 	if is_player_weapon:
+		Global.camera.shake(0.05, 15, 11.1)
 		Global.player_ammo -= 1
 		
 		if Global.player_ammo <= 0:

@@ -1,6 +1,7 @@
 extends Node
 
 var main_scene
+var camera
 var player : KinematicBody2D
 var spawner : Node
 var hud : CanvasLayer
@@ -26,13 +27,26 @@ func night_time():
 	pass
 	
 func get_entity_rnd_radius(entity, radius:=Vector2(0,0), offset:=Vector2(0,0)) -> Vector2:
-	var vector := Vector2(0,0)
+	var vector := Vector2(radius.x,radius.y)
 	rng.randomize()
 	var offset_x = rng.randf_range(-offset.x, offset.x)
 	var offset_y = rng.randf_range(-offset.y, offset.y)
 	vector = Vector2(entity.global_position.x + offset_x, entity.global_position.y + offset_y)
 	return vector
 
+# Function to damage the player and check if its game over
+func damage_player(damage) -> void:
+	player_health -= damage
+	hud.update_hud()
+	if player_health <= 0:
+		game_over()
+
+# Function for the game over
+func game_over():
+	print_debug("Game Over!")
+	get_tree().reload_current_scene()
+	pass
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
+# func _process(delta):
 #	pass

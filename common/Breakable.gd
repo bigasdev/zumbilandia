@@ -24,13 +24,13 @@ func destroy() -> void:
 	var collectable_instance = collectable.instance()
 	get_node("/root/MainScene/Game").add_child(collectable_instance)
 	collectable_instance.position = position
+	queue_free()
 	if type == BreakableType.CHEST:
 		collectable_instance.randomize_spawn()
 		pass
 	if type == BreakableType.AMMO_BOX:
 		collectable_instance.set_type(2)
 		pass
-	queue_free()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
