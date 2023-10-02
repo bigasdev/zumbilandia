@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://hud/Monocraft.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://hud/clock.png" type="Texture" id=2]
 [ext_resource path="res://hud/main_hud.png" type="Texture" id=3]
 [ext_resource path="res://hud/HUD.gd" type="Script" id=4]
+[ext_resource path="res://hud/main_hud_bg.png" type="Texture" id=5]
 
 [sub_resource type="CanvasItemMaterial" id=3]
 
@@ -31,32 +32,46 @@ margin_right = 1008.0
 margin_bottom = 46.0
 text = "Pause"
 
-[node name="Clock" type="TextureRect" parent="."]
-margin_left = 434.0
-margin_top = 12.0
-margin_right = 457.0
-margin_bottom = 34.0
+[node name="Main_HUD" type="Control" parent="."]
+margin_left = 451.0
+margin_top = 8.0
+margin_right = 491.0
+margin_bottom = 48.0
+
+[node name="BG" type="TextureRect" parent="Main_HUD"]
+margin_left = -40.0
+margin_top = -2.0
+margin_right = 51.0
+margin_bottom = 38.0
+rect_scale = Vector2( 2, 2 )
+texture = ExtResource( 5 )
+
+[node name="Clock" type="TextureRect" parent="Main_HUD"]
+margin_left = -36.0
+margin_top = -2.0
+margin_right = -13.0
+margin_bottom = 20.0
 rect_scale = Vector2( 2, 2 )
 texture = ExtResource( 2 )
 stretch_mode = 6
 
-[node name="Counter" type="Label" parent="."]
+[node name="Counter" type="Label" parent="Main_HUD"]
 material = SubResource( 3 )
-margin_left = 487.0
-margin_top = 19.0
-margin_right = 683.0
-margin_bottom = 67.0
+margin_left = 12.0
+margin_top = 6.0
+margin_right = 208.0
+margin_bottom = 54.0
 custom_fonts/font = SubResource( 2 )
 text = "00:00"
 
-[node name="Timer" type="Timer" parent="Counter"]
+[node name="Timer" type="Timer" parent="Main_HUD/Counter"]
 wait_time = 15.0
 
 [node name="Components" type="TextureRect" parent="."]
-margin_left = 8.0
-margin_top = 8.0
-margin_right = 117.0
-margin_bottom = 114.0
+margin_left = 2.0
+margin_top = 1.0
+margin_right = 111.0
+margin_bottom = 107.0
 texture = ExtResource( 3 )
 expand = true
 stretch_mode = 6
@@ -71,10 +86,10 @@ custom_fonts/font = SubResource( 4 )
 text = "100"
 
 [node name="Ammo" type="Label" parent="Components"]
-margin_left = 51.0
-margin_top = 11.0
-margin_right = 91.0
-margin_bottom = 29.0
+margin_left = 50.0
+margin_top = 10.0
+margin_right = 90.0
+margin_bottom = 28.0
 custom_colors/font_color = Color( 0.74902, 0.435294, 0.290196, 1 )
 custom_fonts/font = SubResource( 4 )
 text = "100"
@@ -88,4 +103,4 @@ custom_colors/font_color = Color( 1, 0.784314, 0.145098, 1 )
 custom_fonts/font = SubResource( 4 )
 text = "000"
 
-[connection signal="timeout" from="Counter/Timer" to="." method="_on_Timer_timeout"]
+[connection signal="timeout" from="Main_HUD/Counter/Timer" to="." method="_on_Timer_timeout"]

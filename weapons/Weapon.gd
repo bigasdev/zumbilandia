@@ -8,14 +8,21 @@ extends Sprite
 export var damage : float
 export var is_player_weapon : bool
 export var radius : float = 5
+export var cooldown : float = 0.15
 
 onready var bulletPos = $BulletPos
 
-# bullet object
+# components
 onready var bullet = preload("res://weapons/Bullet.tscn")
+onready var timer : Timer = $Timer
+
+var can_shoot := true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	if is_player_weapon:
+		timer.wait_time = cooldown
+		pass
 	pass # Replace with function body.
 
 # Function that will set the damage of the weapon based in the character\
@@ -25,6 +32,8 @@ func set_damage(damage):
 	
 # Function that will shoot the bullet
 func shoot():
+	if !can_shoot: return
+
 	var bullet_instance = bullet.instance()
 	
 	if is_player_weapon:
@@ -39,6 +48,8 @@ func shoot():
 	get_node("/root/MainScene").add_child(bullet_instance)
 	bullet_instance.direction = (get_global_mouse_position() - Global.player.global_position).normalized()
 	bullet_instance.position = bulletPos.global_position
+	can_shoot = false
+	timer.start(cooldown)
 	pass
 	
 func _rotate_mouse():
@@ -73,3 +84,9 @@ func _process(delta):
 	
 	_rotate_mouse()
 	pass
+
+
+func _on_Timer_timeout():
+	print_debug("finished")
+	can_shoot = true
+	pass # Replace with function body.

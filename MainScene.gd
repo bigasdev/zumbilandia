@@ -2,8 +2,8 @@ extends Control
 
 onready var hud : CanvasLayer = $HUD
 onready var menu : Control = $Menu
-onready var counter : Label = $HUD/Counter
-onready var counter_timer : Timer = $HUD/Counter/Timer
+onready var counter : Label = $HUD/Main_HUD/Counter
+onready var counter_timer : Timer = $HUD/Main_HUD/Counter/Timer
 
 
 # Declare member variables here. Examples:

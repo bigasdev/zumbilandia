@@ -86,7 +86,7 @@ player_range = 80.0
 scale = Vector2( 3, 3 )
 frames = SubResource( 8 )
 animation = "idle"
-frame = 2
+frame = 1
 playing = true
 
 [node name="Weapon" type="Sprite" parent="."]
@@ -97,10 +97,15 @@ flip_h = true
 script = ExtResource( 1 )
 is_player_weapon = true
 radius = 32.0
+cooldown = 0.35
 
 [node name="BulletPos" type="Position2D" parent="Weapon"]
 position = Vector2( 8.66667, -0.333333 )
 scale = Vector2( 2, 2 )
+
+[node name="Timer" type="Timer" parent="Weapon"]
+wait_time = 0.15
+one_shot = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -0.5, 1 )
@@ -115,3 +120,5 @@ autostart = true
 reset_on_save = false
 method_call_mode = 1
 anims/Collect = SubResource( 2 )
+
+[connection signal="timeout" from="Weapon/Timer" to="Weapon" method="_on_Timer_timeout"]
