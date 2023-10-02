@@ -37,6 +37,7 @@ func get_entity_rnd_radius(entity, radius:=Vector2(0,0), offset:=Vector2(0,0)) -
 # Function to damage the player and check if its game over
 func damage_player(damage) -> void:
 	player_health -= damage
+	Global.camera.shake(0.15, 15, 30.1)
 	hud.update_hud()
 	if player_health <= 0:
 		game_over()

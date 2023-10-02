@@ -29,7 +29,6 @@ func _ready():
 	pass # Replace with function body.
 
 func kill(drop:bool) -> void:
-	Global.camera.shake(0.15, 15, 30.1)
 	if drop:
 		var i = 0
 		while i < coins_to_drop:
