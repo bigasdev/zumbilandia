@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://weapons/Weapon.gd" type="Script" id=1]
 [ext_resource path="res://characters/Player.gd" type="Script" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://characters/sprites/npc_idle.png" type="Texture" id=5]
 [ext_resource path="res://characters/sprites/npcShadow.png" type="Texture" id=6]
 [ext_resource path="res://sounds/shoot_sound.mp3" type="AudioStream" id=7]
+[ext_resource path="res://environment/particles/Light2D.tscn" type="PackedScene" id=8]
 
 [sub_resource type="AtlasTexture" id=10]
 atlas = ExtResource( 5 )
@@ -66,7 +67,7 @@ extents = Vector2( 18.5, 25 )
 
 [sub_resource type="Animation" id=2]
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:scale")
+tracks/0/path = NodePath("YSort/Sprite:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -84,11 +85,19 @@ moveSpeed = 250.0
 damage = 1
 player_range = 80.0
 
-[node name="Sprite" type="AnimatedSprite" parent="."]
+[node name="Light2D" parent="." instance=ExtResource( 8 )]
+position = Vector2( -2, 4 )
+texture_scale = 0.55
+color = Color( 0.447059, 0.129412, 0.643137, 0.647059 )
+
+[node name="YSort" type="YSort" parent="."]
+z_as_relative = false
+
+[node name="Sprite" type="AnimatedSprite" parent="YSort"]
 scale = Vector2( 3, 3 )
+z_index = 1
 frames = SubResource( 8 )
 animation = "idle"
-frame = 3
 playing = true
 
 [node name="Weapon" type="Sprite" parent="."]

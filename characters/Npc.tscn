@@ -69,12 +69,13 @@ script = ExtResource( 1 )
 moveSpeed = 50.0
 player_range = 80.0
 
-[node name="Sprite" type="AnimatedSprite" parent="."]
+[node name="YSort" type="YSort" parent="."]
+
+[node name="Sprite" type="AnimatedSprite" parent="YSort"]
 position = Vector2( 1, 0 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 3 )
 animation = "idle"
-frame = 1
 playing = true
 
 [node name="Weapon" type="Sprite" parent="."]

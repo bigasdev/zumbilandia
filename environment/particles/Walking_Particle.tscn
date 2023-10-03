@@ -33,6 +33,7 @@ animations = [ {
 } ]
 
 [node name="Walking_Particle" type="AnimatedSprite"]
+modulate = Color( 0.2, 0.596078, 0.294118, 1 )
 position = Vector2( -16, 3 )
 scale = Vector2( 3, 3 )
 z_index = -1

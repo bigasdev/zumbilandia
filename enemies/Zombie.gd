@@ -46,6 +46,9 @@ func kill(drop:bool) -> void:
 
 # Function that will make the zombie run to the player
 func chase(player : Node2D) -> void:
+	if StateManager.game_running() == false:
+		return
+
 	if staticPos:
 		return
 

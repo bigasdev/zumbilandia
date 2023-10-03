@@ -7,7 +7,7 @@ export var player_range : float = 100
 
 # components
 onready var weapon : Sprite = $Weapon
-onready var sprite := $Sprite
+onready var sprite := $YSort/Sprite
 
 #following variables
 var following : KinematicBody2D

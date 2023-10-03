@@ -8,36 +8,67 @@
 [ext_resource path="res://environment/sprites/1.1.png" type="Texture" id=7]
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 24.5, 13 )
+extents = Vector2( 20, 13 )
 
 [node name="Rock" type="KinematicBody2D"]
 
 [node name="EnvironmentSpriteController" parent="." instance=ExtResource( 2 )]
 textures = [ ExtResource( 5 ), ExtResource( 3 ), ExtResource( 6 ), ExtResource( 7 ) ]
 has_animated_sprite = false
-sprites = [ NodePath("../Sprite2"), NodePath("../Sprite3"), NodePath("../Sprite4") ]
+sprites = [ NodePath("../Sprite2"), NodePath("../Sprite3"), NodePath("../Sprite4"), NodePath("../Sprite5"), NodePath("../Sprite6"), NodePath("../Sprite7"), NodePath("../Sprite8") ]
 
 [node name="Sprite" type="Sprite" parent="."]
 scale = Vector2( 3, 3 )
-z_index = -1
 texture = ExtResource( 5 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0.5, 4 )
+position = Vector2( 0, 4 )
 shape = SubResource( 2 )
 
 [node name="Sprite2" type="Sprite" parent="."]
-position = Vector2( -18, 4 )
+visible = false
+position = Vector2( -31, 9 )
 scale = Vector2( 3, 3 )
 texture = ExtResource( 4 )
 
 [node name="Sprite3" type="Sprite" parent="."]
-position = Vector2( 14, -13 )
+visible = false
+position = Vector2( 24, -15 )
+scale = Vector2( 3, 3 )
+z_index = -2
+texture = ExtResource( 4 )
+offset = Vector2( -1.33333, -2.33333 )
+
+[node name="Sprite4" type="Sprite" parent="."]
+visible = false
+position = Vector2( 28, 17 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 4 )
+
+[node name="Sprite5" type="Sprite" parent="."]
+visible = false
+position = Vector2( -27, -22 )
 scale = Vector2( 3, 3 )
 z_index = -2
 texture = ExtResource( 4 )
 
-[node name="Sprite4" type="Sprite" parent="."]
-position = Vector2( 17, 9 )
+[node name="Sprite6" type="Sprite" parent="."]
+visible = false
+position = Vector2( 41, -5 )
 scale = Vector2( 3, 3 )
+z_index = -2
+texture = ExtResource( 4 )
+
+[node name="Sprite7" type="Sprite" parent="."]
+visible = false
+position = Vector2( -51, -7 )
+scale = Vector2( 3, 3 )
+z_index = -2
+texture = ExtResource( 4 )
+
+[node name="Sprite8" type="Sprite" parent="."]
+visible = false
+position = Vector2( -5, 29 )
+scale = Vector2( 3, 3 )
+z_index = -2
 texture = ExtResource( 4 )

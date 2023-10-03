@@ -10,6 +10,8 @@ export var textures := []
 export var has_animated_sprite := true
 
 export(Array, NodePath) var sprites := []
+export var sprites_max := 2
+var current_sprites = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -42,9 +44,12 @@ func sprite_random() -> void:
 func hide_random() -> void:
 	for sprite in sprites:
 		var random = randi()%2
+		if current_sprites >= sprites_max:
+			break
 		if random == 0:
 			var n = get_node(sprite)
-			n.visible = false
+			current_sprites += 1
+			n.visible = true
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
