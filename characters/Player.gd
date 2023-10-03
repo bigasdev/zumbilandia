@@ -14,6 +14,9 @@ var is_moving := false
 
 # Components
 onready var animation = $AnimationPlayer
+onready var dust_particle = preload("res://environment/particles/Walking_Particle.tscn")
+onready var dust_right_pos = $Dust_Right
+onready var dust_left_pos = $Dust_Left
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -72,3 +75,21 @@ func _process(delta):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+# Function that will spawn the dust in the correct position and flip it based in the sprite.flip
+func _spawn_dust() -> void:
+	var dust = dust_particle.instance()
+	get_node("/root/MainScene").add_child(dust)
+	if sprite.flip_h:
+		dust.position = dust_left_pos.global_position
+	else:
+		dust.flip_h = true
+		dust.position = dust_right_pos.global_position
+	dust.play("walking")
+	pass
+
+func _on_Dust_timeout():
+	if is_moving:
+		_spawn_dust()
+		pass
+	pass # Replace with function body.

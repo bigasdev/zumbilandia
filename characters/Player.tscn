@@ -88,7 +88,7 @@ player_range = 80.0
 scale = Vector2( 3, 3 )
 frames = SubResource( 8 )
 animation = "idle"
-frame = 4
+frame = 1
 playing = true
 
 [node name="Weapon" type="Sprite" parent="."]
@@ -122,6 +122,10 @@ shape = SubResource( 1 )
 [node name="Shoot" type="Timer" parent="Timers"]
 autostart = true
 
+[node name="Dust" type="Timer" parent="Timers"]
+wait_time = 0.3
+autostart = true
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 reset_on_save = false
 method_call_mode = 1
@@ -133,5 +137,14 @@ scale = Vector2( 3, 3 )
 z_index = -1
 texture = ExtResource( 6 )
 
+[node name="Dust_Right" type="Position2D" parent="."]
+position = Vector2( 11, 14 )
+
+[node name="Dust_Left" type="Position2D" parent="."]
+position = Vector2( -13, 14 )
+
+[node name="Particle_Positions" type="Node" parent="."]
+
 [connection signal="timeout" from="Weapon/Timer" to="Weapon" method="_on_Timer_timeout"]
 [connection signal="finished" from="Weapon/Sound" to="Weapon" method="_on_Sound_finished"]
+[connection signal="timeout" from="Timers/Dust" to="." method="_on_Dust_timeout"]

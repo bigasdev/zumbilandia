@@ -16,8 +16,8 @@ export var plant_amount = 100
 export var rock_amount = 200
 
 # Resources
-onready var plant = preload("res://Environment//Plant.tscn")
-onready var rock = preload("res://Environment//Rock.tscn")
+onready var plant = preload("res://environment//Plant.tscn")
+onready var rock = preload("res://environment//Rock.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
