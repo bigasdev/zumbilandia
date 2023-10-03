@@ -9,12 +9,13 @@ extends Node
 export var textures := []
 export var has_animated_sprite := true
 
-
+export(Array, NodePath) var sprites := []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	if has_animated_sprite : sprite_random_animated()
 	else : sprite_random()
+	if sprites.size() != 0 : hide_random()
 	pass # Replace with function body.
 
 # Function that will get the parent animatedsprite child and change the animation from "idle" or "idle1" randomly
@@ -36,6 +37,14 @@ func sprite_random() -> void:
 	var sprite = get_parent().get_node("Sprite")
 	var random = randi()%textures.size()
 	sprite.set_texture(textures[random])
+
+# Function that will loop in all the sprites node and randomly make it not visible
+func hide_random() -> void:
+	for sprite in sprites:
+		var random = randi()%2
+		if random == 0:
+			var n = get_node(sprite)
+			n.visible = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

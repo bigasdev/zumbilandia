@@ -16,6 +16,7 @@
 script = ExtResource( 1 )
 textures = [ ExtResource( 5 ), ExtResource( 3 ), ExtResource( 6 ), ExtResource( 7 ) ]
 has_animated_sprite = false
+sprites = [ NodePath("../Sprite2"), NodePath("../Sprite3"), NodePath("../Sprite4") ]
 
 [node name="Sprite" type="Sprite" parent="."]
 scale = Vector2( 3, 3 )
@@ -26,7 +27,7 @@ texture = ExtResource( 5 )
 shape = SubResource( 2 )
 
 [node name="Sprite2" type="Sprite" parent="."]
-position = Vector2( -19, 4 )
+position = Vector2( -18, 4 )
 scale = Vector2( 3, 3 )
 texture = ExtResource( 4 )
 
