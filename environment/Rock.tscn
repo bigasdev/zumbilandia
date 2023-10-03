@@ -1,0 +1,24 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://environment/EnvironmentSpriteController.gd" type="Script" id=1]
+[ext_resource path="res://environment/EnvironmentSpriteController.tscn" type="PackedScene" id=2]
+[ext_resource path="res://environment/sprites/2.png" type="Texture" id=3]
+[ext_resource path="res://environment/sprites/3.png" type="Texture" id=4]
+[ext_resource path="res://environment/sprites/1.png" type="Texture" id=5]
+
+[sub_resource type="RectangleShape2D" id=2]
+
+[node name="Rock" type="Area2D"]
+
+[node name="EnvironmentSpriteController" parent="." instance=ExtResource( 2 )]
+script = ExtResource( 1 )
+textures = [ ExtResource( 5 ), ExtResource( 3 ), ExtResource( 4 ) ]
+has_animated_sprite = false
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 3, 3 )
+z_index = -1
+texture = ExtResource( 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 2 )
