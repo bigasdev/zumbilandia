@@ -30,7 +30,7 @@ script = ExtResource( 2 )
 offset = Vector2( 1300, 1300 )
 health = 5
 moveSpeed = 50
-damage_dist = 100
+damage_dist = 75
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 2, 0 )

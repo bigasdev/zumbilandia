@@ -88,7 +88,7 @@ player_range = 80.0
 scale = Vector2( 3, 3 )
 frames = SubResource( 8 )
 animation = "idle"
-frame = 1
+frame = 3
 playing = true
 
 [node name="Weapon" type="Sprite" parent="."]
