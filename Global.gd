@@ -6,6 +6,9 @@ var player : KinematicBody2D
 var spawner : Node
 var hud : CanvasLayer
 
+const BORDER_X : int = 1500
+const BORDER_Y : int = 1500
+
 var player_health : int = 100
 var player_ammo : int = 200
 var player_coins : int = 0
@@ -26,13 +29,14 @@ func night_time():
 	spawner.night_time()
 	pass
 	
-func get_entity_rnd_radius(entity, radius:=Vector2(0,0), offset:=Vector2(0,0)) -> Vector2:
-	var vector := Vector2(radius.x,radius.y)
+func get_entity_rnd_radius(entity, radius=Vector2.ZERO, offset=Vector2.ZERO) -> Vector2:
+	var vector = Vector2(radius.x, radius.y)
 	rng.randomize()
 	var offset_x = rng.randf_range(-offset.x, offset.x)
 	var offset_y = rng.randf_range(-offset.y, offset.y)
 	vector = Vector2(entity.global_position.x + offset_x, entity.global_position.y + offset_y)
 	return vector
+	
 
 # Function to damage the player and check if its game over
 func damage_player(damage) -> void:
