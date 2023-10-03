@@ -10,6 +10,9 @@ onready var ammo_box_sprite = preload("res://common/AmmoBox.png")
 
 # components
 onready var collectable = preload("res://powerups/Collectable.tscn")
+onready var break_sound = $Die_Sound
+
+var killed := false
 
 # Declare member variables here. Examples:
 # var a = 2
@@ -21,10 +24,13 @@ func _ready():
 	pass # Replace with function body.
 	
 func destroy() -> void:
+	if killed : return
+
+	break_sound.play()
+	killed = true
 	var collectable_instance = collectable.instance()
 	get_node("/root/MainScene/Game").add_child(collectable_instance)
 	collectable_instance.position = position
-	queue_free()
 	if type == BreakableType.CHEST:
 		collectable_instance.randomize_spawn()
 		pass
@@ -36,3 +42,8 @@ func destroy() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+
+func _on_Die_Sound_finished():
+	queue_free()
+	pass # Replace with function body.

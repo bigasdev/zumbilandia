@@ -7,6 +7,7 @@ onready var boots_sprite = preload("res://powerups/Boots.png")
 onready var sword_sprite = preload("res://powerups/Sword.png")
 onready var heart_sprite = preload("res://powerups/Heart.png")
 onready var ammo_sprite = preload("res://powerups/Ammo.png")
+onready var collect_sound = $Collect_Sound
 
 onready var collectable_sprite = $Sprite
 
@@ -20,6 +21,8 @@ export var random_pos_offset : Vector2
 var original_y_pos : float
 var y_pos : float = 0
 var float_state_up = false
+
+var collected := false
 
 # Declare member variables here. Examples:
 # var a = 2
@@ -82,6 +85,11 @@ func _move_coin(delta):
 	pass
 	
 func collect():
+	if collected : return
+
+	collect_sound.play()
+	collected = true
+	collectable_sprite.visible = false
 	if type == CollectableType.POWER:
 		PowerupManager.power_powerup += 1
 		pass
@@ -92,7 +100,6 @@ func collect():
 		Global.player_ammo += 50
 		Global.hud.update_hud()
 		pass
-	queue_free()
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -106,4 +113,9 @@ func _on_Collectable_body_entered(body):
 		body.collect()
 		collect()
 		pass
+	pass # Replace with function body.
+
+
+func _on_Collect_Sound_finished():
+	queue_free()
 	pass # Replace with function body.

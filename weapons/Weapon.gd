@@ -15,6 +15,7 @@ onready var bulletPos = $BulletPos
 # components
 onready var bullet = preload("res://weapons/Bullet.tscn")
 onready var timer : Timer = $Timer
+onready var sound : AudioStreamPlayer = $Sound
 
 var can_shoot := true
 
@@ -35,6 +36,7 @@ func shoot():
 	if !can_shoot: return
 
 	var bullet_instance = bullet.instance()
+	sound.play()
 	
 	if is_player_weapon:
 		Global.player_ammo -= 1
@@ -88,4 +90,9 @@ func _process(delta):
 func _on_Timer_timeout():
 	print_debug("finished")
 	can_shoot = true
+	pass # Replace with function body.
+
+
+func _on_Sound_finished():
+	sound.stop()
 	pass # Replace with function body.

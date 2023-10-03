@@ -10,6 +10,7 @@ export var textures := []
 export var has_animated_sprite := true
 
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	if has_animated_sprite : sprite_random_animated()

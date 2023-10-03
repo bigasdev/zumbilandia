@@ -17,6 +17,9 @@ export var damage_dist := 30
 # Components
 onready var animation = $AnimationPlayer
 onready var coin = preload("res://common/Coin.tscn")
+onready var die_sound = $Die_Sound
+
+var killed := false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -29,6 +32,10 @@ func _ready():
 	pass # Replace with function body.
 
 func kill(drop:bool) -> void:
+	if killed : return
+
+	die_sound.play()
+	killed = true
 	if drop:
 		var i = 0
 		while i < coins_to_drop:
@@ -36,7 +43,6 @@ func kill(drop:bool) -> void:
 			coin.position = Global.get_entity_rnd_radius(self, Vector2.ZERO, Vector2(50,50))
 			get_node("/root/MainScene/Game").add_child(coin)
 			i += 1
-	queue_free()
 
 # Function that will make the zombie run to the player
 func chase(player : Node2D) -> void:
@@ -64,9 +70,16 @@ func damage(dmg:int):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if killed : return
+
 	if StateManager.game_running():
 		chase(Global.player)
 		if player_on_range(damage_dist) && !staticPos:
 			Global.damage_player(damage)
 			kill(false)
 	pass
+
+
+func _on_Die_Sound_finished():
+	queue_free()
+	pass # Replace with function body.

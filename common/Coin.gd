@@ -6,12 +6,14 @@ extends Area2D
 # var b = "text"
 
 onready var sprite : Sprite = $Sprite
+onready var collect_sound = $Collect_Sound
 export var y_pos_limit : float = .5
 export var float_speed : float = 3
 
 var original_y_pos : float
 var y_pos : float = 0
 var float_state_up = false
+var collected := false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -41,13 +43,22 @@ func _process(delta):
 	pass
 	
 func _collect() -> void:
+	if collected:return
+
+	collect_sound.play()
+	collected = true
+	sprite.visible = false
 	Global.player_coins += 1
 	Global.hud.update_hud()
-	queue_free()
 
 
 func _on_Coin_body_entered(body):
 	if body.is_in_group("Player"):
 		_collect()
 		body.collect()
+	pass # Replace with function body.
+
+
+func _on_Collect_Sound_finished():
+	queue_free()
 	pass # Replace with function body.

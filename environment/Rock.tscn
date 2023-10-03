@@ -1,10 +1,12 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://environment/EnvironmentSpriteController.gd" type="Script" id=1]
 [ext_resource path="res://environment/EnvironmentSpriteController.tscn" type="PackedScene" id=2]
 [ext_resource path="res://environment/sprites/2.png" type="Texture" id=3]
 [ext_resource path="res://environment/sprites/3.png" type="Texture" id=4]
 [ext_resource path="res://environment/sprites/1.png" type="Texture" id=5]
+[ext_resource path="res://environment/sprites/2.1.png" type="Texture" id=6]
+[ext_resource path="res://environment/sprites/1.1.png" type="Texture" id=7]
 
 [sub_resource type="RectangleShape2D" id=2]
 
@@ -12,7 +14,7 @@
 
 [node name="EnvironmentSpriteController" parent="." instance=ExtResource( 2 )]
 script = ExtResource( 1 )
-textures = [ ExtResource( 5 ), ExtResource( 3 ), ExtResource( 4 ) ]
+textures = [ ExtResource( 5 ), ExtResource( 3 ), ExtResource( 6 ), ExtResource( 7 ) ]
 has_animated_sprite = false
 
 [node name="Sprite" type="Sprite" parent="."]
@@ -22,3 +24,19 @@ texture = ExtResource( 5 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 2 )
+
+[node name="Sprite2" type="Sprite" parent="."]
+position = Vector2( -19, 4 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 4 )
+
+[node name="Sprite3" type="Sprite" parent="."]
+position = Vector2( 14, -13 )
+scale = Vector2( 3, 3 )
+z_index = -2
+texture = ExtResource( 4 )
+
+[node name="Sprite4" type="Sprite" parent="."]
+position = Vector2( 17, 9 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 4 )
