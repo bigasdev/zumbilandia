@@ -11,6 +11,7 @@ var velocity : Vector2
 
 # Variables
 export var life_timer := 3
+onready var hit_particle = preload("res://environment/particles/Hit_Particle.tscn")
 
 # private
 var life_time = 0
@@ -37,10 +38,21 @@ func _process(delta) -> void:
 func _on_Bullet_body_entered(body):
 	print_debug(body)
 	if body.is_in_group("Zombie"):
+		# Instantiate the hit effect
+		var hit_effect = hit_particle.instance()
+		get_parent().add_child(hit_effect)
+		hit_effect.play("idle")
+		hit_effect.position = body.global_position
+
 		body.damage(Global.player.damage + PowerupManager.power_powerup)
 		queue_free()
 		pass
 	if body.is_in_group("Breakable"):
+		var hit_effect = hit_particle.instance()
+		get_parent().add_child(hit_effect)
+		hit_effect.play("idle")
+		hit_effect.position = body.global_position
+
 		body.destroy()
 		queue_free()
 		pass
