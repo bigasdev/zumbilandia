@@ -16,10 +16,12 @@ export var damage_dist := 30
 
 # Components
 onready var animation = $AnimationPlayer
+onready var animated_sprite = $Sprite
 onready var coin = preload("res://common/Coin.tscn")
 onready var die_sound = $Die_Sound
 
 var killed := false
+var spawned := false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -29,7 +31,14 @@ func _ready():
 	
 	# get a random position based in an offset around the player
 	position = Global.get_entity_rnd_radius(self, Vector2.ZERO, offset)
+	animation.play("Spawn")
+	animated_sprite.play("spawning")
 	pass # Replace with function body.
+
+func spawn():
+	spawned = true
+	#animated_sprite.play("idle")
+	pass
 
 func kill(drop:bool) -> void:
 	if killed : return
@@ -64,6 +73,8 @@ func player_on_range(dist:float) -> bool:
 		return false
 
 func damage(dmg:int):
+	if !spawned : return
+
 	health -= dmg
 	animation.play("Blink")
 	if health <= 0:
@@ -73,7 +84,7 @@ func damage(dmg:int):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if killed : return
+	if killed || !spawned: return
 
 	if StateManager.game_running():
 		chase(Global.player)
