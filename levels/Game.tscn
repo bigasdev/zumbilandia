@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://characters/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://characters/Rescue.tscn" type="PackedScene" id=2]
@@ -10,6 +10,8 @@
 [ext_resource path="res://tileset/tiletest.png" type="Texture" id=8]
 [ext_resource path="res://environment/Tree.tscn" type="PackedScene" id=9]
 [ext_resource path="res://environment/EnvironmentSpawner.gd" type="Script" id=10]
+[ext_resource path="res://characters/sprites/vendedor.png" type="Texture" id=11]
+[ext_resource path="res://environment/particles/Light2D.tscn" type="PackedScene" id=12]
 
 [sub_resource type="TileSet" id=1]
 0/name = "tiletest.png 0"
@@ -26,6 +28,37 @@
 0/shape_one_way_margin = 0.0
 0/shapes = [  ]
 0/z_index = 0
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 34.0147
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 11 )
+region = Rect2( 0, 0, 70, 70 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 11 )
+region = Rect2( 70, 0, 70, 70 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 11 )
+region = Rect2( 140, 0, 70, 70 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 11 )
+region = Rect2( 210, 0, 70, 70 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 11 )
+region = Rect2( 280, 0, 70, 70 )
+
+[sub_resource type="SpriteFrames" id=8]
+animations = [ {
+"frames": [ SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ) ],
+"loop": true,
+"name": "idle",
+"speed": 4.0
+} ]
 
 [node name="Game" type="Node"]
 
@@ -144,6 +177,23 @@ position = Vector2( 704, -159 )
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color( 0.831373, 0.654902, 0.831373, 1 )
+
+[node name="Vendor" type="KinematicBody2D" parent="."]
+position = Vector2( 546, 436 )
+
+[node name="Light2D" parent="Vendor" instance=ExtResource( 12 )]
+position = Vector2( 7, 33 )
+texture_scale = 0.18
+color = Color( 0.764706, 0.498039, 0.121569, 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Vendor"]
+shape = SubResource( 2 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Vendor"]
+scale = Vector2( 3, 3 )
+frames = SubResource( 8 )
+animation = "idle"
+playing = true
 
 [connection signal="timeout" from="Spawner/Timer" to="Spawner" method="_on_Timer_timeout"]
 [connection signal="timeout" from="Spawner/CollectableTimer" to="Spawner" method="_on_Timer_timeout"]

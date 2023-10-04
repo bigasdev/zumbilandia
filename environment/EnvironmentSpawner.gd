@@ -31,6 +31,7 @@ func _ready():
 func spawn_plants() -> void:
 	# Get the random position
 	var random_position = Vector2(rand_range(-Global.BORDER_X, Global.BORDER_X - plant_offset_x), rand_range(-Global.BORDER_Y, Global.BORDER_Y - plant_offset_y))
+
 	# Check if the position is already used
 	if used_positions.find(random_position) == -1:
 		iteration += 1

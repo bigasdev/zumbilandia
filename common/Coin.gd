@@ -9,11 +9,13 @@ onready var sprite : Sprite = $Sprite
 onready var collect_sound = $Collect_Sound
 export var y_pos_limit : float = .5
 export var float_speed : float = 3
+export var move_speed : float = 15
 
 var original_y_pos : float
 var y_pos : float = 0
 var float_state_up = false
 var collected := false
+var collided := false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -40,6 +42,14 @@ func _move_coin(delta):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	_move_coin(delta)
+
+	# If collided we move it to the player
+	if collided:
+		position = position.linear_interpolate(Global.player.position, move_speed * delta)
+		if position.distance_to(Global.player.position) < 20:
+			_collect()
+			Global.player.collect()
+
 	pass
 	
 func _collect() -> void:
@@ -54,8 +64,7 @@ func _collect() -> void:
 
 func _on_Coin_body_entered(body):
 	if body.is_in_group("Player"):
-		_collect()
-		body.collect()
+		collided = true
 	pass # Replace with function body.
 
 
