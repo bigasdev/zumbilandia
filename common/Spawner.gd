@@ -10,6 +10,7 @@ export var night_time_amount = 25
 export var rescue_offset := Vector2(0,0)
 
 # Components
+onready var zombie_timer = $Timer
 onready var night_timer = $NightTimer
 
 # Resources 
@@ -29,8 +30,11 @@ func _ready():
 func _on_Timer_timeout():
 	if !StateManager.game_can_spawn(): return
 	
-	var zombie = preload("res://enemies/Zombie.tscn")
-	add_child(zombie.instance())
+	var i = 0
+	while i < Global.round_zombie_multiplier:
+		var zombie = preload("res://enemies/Zombie.tscn")
+		add_child(zombie.instance())
+		i+=1
 	pass # Replace with function body.
 
 
@@ -43,6 +47,7 @@ func night_time():
 		var zombie = preload("res://enemies/Zombie.tscn")
 		add_child(zombie.instance())
 		i += 1
+	night_time_amount += 20
 	pass
 
 # Function that will spawn the rescue randomly with an offset from the player
@@ -57,5 +62,6 @@ func spawn_rescue():
 func _on_NightTimer_timeout():
 	print_debug("Reseting the update method")
 	Global.main_scene.counter_timer.start()
+	if zombie_timer.wait_time >= 0.2 : zombie_timer.wait_time -= 0.1
 	StateManager.set_update()
 	pass # Replace with function body.

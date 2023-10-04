@@ -12,11 +12,13 @@ export var health : int = 10
 export var moveSpeed := 450
 export var coins_to_drop := 3
 export var damage := 5
+export var closest_dist := 50
 export var damage_dist := 30
 
 # Components
 onready var animation = $AnimationPlayer
 onready var animated_sprite = $Sprite
+onready var focus = $Focus
 onready var coin = preload("res://common/Coin.tscn")
 onready var die_sound = $Die_Sound
 
@@ -45,6 +47,8 @@ func kill(drop:bool) -> void:
 
 	die_sound.play()
 	killed = true
+	if Global.closest_enemy == self:
+		Global.closest_enemy = null
 	if drop:
 		var i = 0
 		while i < coins_to_drop:
@@ -72,6 +76,16 @@ func player_on_range(dist:float) -> bool:
 	else:
 		return false
 
+# Check if this zombie is the same as the global closest enemy
+func is_closest_enemy() -> bool:
+	if Global.closest_enemy == self:
+		print_debug(self.name + "is close to the player")
+		focus.enabled = true
+		return true
+	else:
+		focus.enabled = false
+		return false
+
 func damage(dmg:int):
 	if (!spawned && !staticPos) : return
 
@@ -85,6 +99,8 @@ func damage(dmg:int):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if killed || !spawned: return
+
+	if player_on_range(closest_dist) : Global.closest_enemy = self
 
 	if StateManager.game_running():
 		chase(Global.player)

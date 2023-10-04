@@ -5,6 +5,7 @@ var camera
 var player : KinematicBody2D
 var spawner : Node
 var hud : CanvasLayer
+var closest_enemy : KinematicBody2D
 
 const BORDER_X : int = 1500
 const BORDER_Y : int = 1500
@@ -12,6 +13,8 @@ const BORDER_Y : int = 1500
 var player_health : int = 100
 var player_ammo : int = 200
 var player_coins : int = 0
+var round_number : int = 0
+var round_zombie_multiplier : int = 1
 
 var rng = RandomNumberGenerator.new()
 
@@ -26,6 +29,9 @@ func _ready():
 
 func night_time():
 	print_debug("its night time!")
+	round_number += 1
+	if round_number % 2 == 0:
+		round_zombie_multiplier += 1
 	spawner.night_time()
 	pass
 	
