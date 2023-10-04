@@ -29,7 +29,7 @@ func _load_game():
 	pass
 
 func _change_counter():
-	counter.text = String(counter_timer.time_left).pad_decimals(0)
+	if !counter_timer.is_stopped() : counter.text = String(counter_timer.time_left).pad_decimals(0)
 	pass
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 
@@ -52,4 +52,7 @@ func _on_Pause_pressed():
 
 func _on_Timer_timeout():
 	Global.night_time()
+	counter_timer.stop()
+	counter.text = ""
+	counter.text = "Night time!"
 	pass # Replace with function body.

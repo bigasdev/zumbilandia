@@ -42,6 +42,7 @@ script = ExtResource( 7 )
 
 [node name="Spawner" type="Node" parent="."]
 script = ExtResource( 3 )
+night_time_amount = 50
 
 [node name="Timer" type="Timer" parent="Spawner"]
 autostart = true
@@ -51,7 +52,7 @@ wait_time = 5.0
 autostart = true
 
 [node name="NightTimer" type="Timer" parent="Spawner"]
-wait_time = 10.0
+wait_time = 60.0
 one_shot = true
 
 [node name="Rescue2" parent="." instance=ExtResource( 2 )]

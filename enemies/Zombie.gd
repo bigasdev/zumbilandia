@@ -73,7 +73,7 @@ func player_on_range(dist:float) -> bool:
 		return false
 
 func damage(dmg:int):
-	if !spawned : return
+	if (!spawned && !staticPos) : return
 
 	health -= dmg
 	animation.play("Blink")

@@ -58,7 +58,8 @@ custom_fonts/font = SubResource( 2 )
 text = "00:00"
 
 [node name="Timer" type="Timer" parent="Main_HUD/Counter"]
-wait_time = 15.0
+wait_time = 45.0
+one_shot = true
 
 [node name="Components" type="TextureRect" parent="."]
 margin_left = 2.0
