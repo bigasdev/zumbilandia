@@ -43,6 +43,7 @@ script = ExtResource( 7 )
 [node name="Spawner" type="Node" parent="."]
 script = ExtResource( 3 )
 night_time_amount = 50
+rescue_offset = Vector2( 800, 800 )
 
 [node name="Timer" type="Timer" parent="Spawner"]
 autostart = true

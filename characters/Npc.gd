@@ -27,11 +27,10 @@ func _ready():
 # Function that will be used to make the npc follow the player
 # or for the enemies to move towards the player
 func move_to(pos, delta):
+	# Move it with kinematic so it has collision
 	position_difference = pos - position
-	smoothed_velocity = position_difference * SMOOTH_SPEED * delta
-	
-	sprite.play("walking")
-	position += smoothed_velocity
+	smoothed_velocity = smoothed_velocity.linear_interpolate(position_difference, SMOOTH_SPEED * delta)
+	move_and_slide(smoothed_velocity)
 	pass
 	
 func is_far_from(pos):
