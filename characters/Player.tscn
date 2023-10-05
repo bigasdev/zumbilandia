@@ -63,11 +63,11 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 18.5, 25 )
+extents = Vector2( 13.5, 16.5 )
 
 [sub_resource type="Animation" id=2]
 tracks/0/type = "value"
-tracks/0/path = NodePath("YSort/Sprite:scale")
+tracks/0/path = NodePath("Sprite:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -98,7 +98,6 @@ scale = Vector2( 3, 3 )
 z_index = 1
 frames = SubResource( 8 )
 animation = "idle"
-frame = 1
 playing = true
 
 [node name="Weapon" type="Sprite" parent="."]
@@ -124,7 +123,7 @@ stream = ExtResource( 7 )
 volume_db = -15.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -0.5, 1 )
+position = Vector2( -0.5, 9.5 )
 shape = SubResource( 1 )
 
 [node name="Timers" type="Node" parent="."]

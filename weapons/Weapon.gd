@@ -107,11 +107,11 @@ func _rotate_enemy():
 		pass
 	# Calculate an angle between the enemy and the weapon
 	var angle = atan2(enemy_pos.y - npc_pos.y, enemy_pos.x - npc_pos.x)
-    
-    # Convert the angle to degrees
+	
+	# Convert the angle to degrees
 	angle = rad2deg(angle)
-    
-    # Set the rotation of the weapon node
+	
+	# Set the rotation of the weapon node
 	rotation_degrees = angle
 	shoot(false)
 	pass
