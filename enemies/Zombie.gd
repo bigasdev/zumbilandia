@@ -31,6 +31,12 @@ func _ready():
 	if staticPos :
 		return
 	
+	# get the multipliers
+	moveSpeed += Global.round_zombie_speed_multiplier
+	damage += Global.round_zombie_damage_multiplier
+	coins_to_drop += Global.round_zombie_coins_multiplier
+	health += Global.round_zombie_health_multiplier
+	
 	# get a random position based in an offset around the player
 	position = Global.get_entity_rnd_radius(self, Vector2.ZERO, offset)
 	animation.play("Spawn")

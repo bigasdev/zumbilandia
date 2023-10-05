@@ -15,6 +15,10 @@ var player_ammo : int = 200
 var player_coins : int = 0
 var round_number : int = 0
 var round_zombie_multiplier : int = 1
+var round_zombie_speed_multiplier : int = 0
+var round_zombie_health_multiplier : int = 0
+var round_zombie_damage_multiplier : int = 0
+var round_zombie_coins_multiplier : int = 0
 
 var rng = RandomNumberGenerator.new()
 
