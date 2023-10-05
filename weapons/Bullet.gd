@@ -40,8 +40,8 @@ func _on_Bullet_body_entered(body):
 	if body.is_in_group("Zombie"):
 		# Instantiate the hit effect
 		var hit_effect = hit_particle.instance()
-		hit_effect.position = Vector2.ZERO
 		body.add_child(hit_effect)
+		hit_effect.global_position = global_position
 		hit_effect.play("idle")
 
 		body.damage(Global.player.damage + PowerupManager.power_powerup)

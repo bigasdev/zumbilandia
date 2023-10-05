@@ -133,7 +133,7 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 21, 22.5 )
+extents = Vector2( 12.5, 22.5 )
 
 [sub_resource type="Animation" id=5]
 resource_name = "Blink"
@@ -173,8 +173,8 @@ script = ExtResource( 2 )
 offset = Vector2( 1300, 1300 )
 health = 5
 moveSpeed = 50
-closest_dist = 200
-damage_dist = 75
+closest_dist = 250
+damage_dist = 50
 
 [node name="Sprite" type="AnimatedSprite" parent="."]
 position = Vector2( 2, 0 )
@@ -184,7 +184,7 @@ animation = "idle"
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, 0.5 )
+position = Vector2( 0.5, 0.5 )
 shape = SubResource( 1 )
 
 [node name="Timers" type="Node" parent="."]
