@@ -5,7 +5,7 @@
 [ext_resource path="res://weapons/Weapon.gd" type="Script" id=4]
 [ext_resource path="res://characters/sprites/npc1_idle.png" type="Texture" id=5]
 [ext_resource path="res://characters/sprites/npcShadow.png" type="Texture" id=6]
-[ext_resource path="res://weapons/pistol.png" type="Texture" id=7]
+[ext_resource path="res://weapons/sprites/pistol.png" type="Texture" id=7]
 [ext_resource path="res://sounds/shoot_sound.mp3" type="AudioStream" id=8]
 
 [sub_resource type="AtlasTexture" id=9]

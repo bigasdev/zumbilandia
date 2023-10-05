@@ -16,4 +16,5 @@ func _process(_delta):
 	if Input.is_action_pressed("exit_game"):
 		StateManager.change_state(StateManager.States.PAUSE)
 		pass
+	if Input.is_action_pressed("debug"): Global.next_weapon()
 	pass

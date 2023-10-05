@@ -64,8 +64,8 @@ func randomize_spawn(rnd_pos:bool=false):
 	pass
 	
 # Function to determine the type
-func set_type(type) -> void:
-	self.type = CollectableType.values()[2]
+func set_type(typei) -> void:
+	self.type = CollectableType.values()[typei]
 	_change_icon()
 
 func _move_coin(delta):

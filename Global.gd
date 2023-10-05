@@ -7,6 +7,10 @@ var spawner : Node
 var hud : CanvasLayer
 var closest_enemy : KinematicBody2D
 
+enum weapons {pistol, revolver, smg, ak, aug, negev}
+
+var current_weapon = weapons.pistol
+
 const BORDER_X : int = 1500
 const BORDER_Y : int = 1500
 
@@ -15,6 +19,7 @@ var player_ammo : int = 200
 var player_coins : int = 0
 var round_number : int = 0
 var round_zombie_multiplier : int = 1
+var weapon_number : int = 0
 
 var rng = RandomNumberGenerator.new()
 
@@ -57,6 +62,13 @@ func game_over():
 	print_debug("Game Over!")
 	get_tree().reload_current_scene()
 	pass
+
+# Function that will increase the weapon number and change the current weapon to the next enum value if there is any
+func next_weapon() -> void:
+	if weapon_number < weapons.negev:
+		weapon_number += 1
+		current_weapon = weapon_number
+		hud.update_hud()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 # func _process(delta):

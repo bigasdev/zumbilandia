@@ -17,6 +17,15 @@ onready var bullet = preload("res://weapons/Bullet.tscn")
 onready var timer : Timer = $Timer
 onready var sound : AudioStreamPlayer = $Sound
 
+# weapon stuff
+onready var pistol_sprite = preload("res://weapons/sprites/pistol.png")
+onready var revolver_sprite = preload("res://weapons/sprites/2Revolver.png")
+onready var shotgun_sprite = preload("res://weapons/sprites/3Sawed-Off_Escopeta.png")
+onready var smg_sprite = preload("res://weapons/sprites/4MP7_Submetralhadora.png")
+onready var ak_sprite = preload("res://weapons/sprites/5AK-47_Rifle.png")
+onready var aug_sprite = preload("res://weapons/sprites/6AUG_Rifle.png")
+onready var negev_sprite = preload("res://weapons/sprites/7Negev_Metralhadora.png")
+
 var can_shoot := true
 
 # Called when the node enters the scene tree for the first time.
