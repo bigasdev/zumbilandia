@@ -19,6 +19,10 @@ var player_ammo : int = 200
 var player_coins : int = 0
 var round_number : int = 0
 var round_zombie_multiplier : int = 1
+var round_zombie_speed_multiplier : int = 0
+var round_zombie_health_multiplier : int = 0
+var round_zombie_damage_multiplier : int = 0
+var round_zombie_coins_multiplier : int = 0
 var weapon_number : int = 0
 
 var rng = RandomNumberGenerator.new()
@@ -65,9 +69,15 @@ func game_over():
 
 # Function that will increase the weapon number and change the current weapon to the next enum value if there is any
 func next_weapon() -> void:
-	if weapon_number < weapons.negev:
+	if weapon_number <= weapons.negev:
 		weapon_number += 1
 		current_weapon = weapon_number
+		print_debug(current_weapon)
+		# Get all the nodes of the game that has the weapon.gd script
+		var weapon_nodes = get_tree().get_nodes_in_group("weapon")
+		# Loop through all the nodes and call the change_weapon function
+		for node in weapon_nodes:
+			node.change_weapon(current_weapon)
 		hud.update_hud()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

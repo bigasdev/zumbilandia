@@ -35,6 +35,34 @@ func _ready():
 		pass
 	pass # Replace with function body.
 
+# Function that will set the weapon based Global.current_weapon
+func change_weapon(weapon_type) -> void:
+	var weapon_texture
+	match weapon_type:
+		0:
+			weapon_texture = pistol_sprite
+		1:
+			cooldown = .5
+			weapon_texture = revolver_sprite
+		2:
+			cooldown = .75
+			weapon_texture = shotgun_sprite
+		3:
+			cooldown = .125
+			weapon_texture = smg_sprite
+		4:
+			cooldown = .2
+			weapon_texture = ak_sprite
+		5:
+			cooldown = .15
+			weapon_texture = aug_sprite
+		6:
+			cooldown = .18
+			weapon_texture = negev_sprite
+
+	texture = weapon_texture
+		
+
 # Function that will set the damage of the weapon based in the character\
 func set_damage(damage):
 	self.damage = damage
@@ -78,8 +106,9 @@ func _rotate_mouse():
 		z_index = -1
 		pass
 	else:
-		z_index = 0
+		z_index = 2
 		pass
+	print_debug(z_index)
 	global_transform.origin = mouse_pos
 	if mouse_dir.x <= 0:
 		flip_v = true
@@ -133,7 +162,7 @@ func _process(delta):
 		_rotate_enemy()
 		return
 	
-	if Input.is_action_just_pressed("player_shoot"): shoot()
+	if Input.is_action_pressed("player_shoot"): shoot()
 	
 	_rotate_mouse()
 	pass

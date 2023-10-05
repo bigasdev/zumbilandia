@@ -98,9 +98,10 @@ scale = Vector2( 3, 3 )
 z_index = 1
 frames = SubResource( 8 )
 animation = "idle"
+frame = 2
 playing = true
 
-[node name="Weapon" type="Sprite" parent="."]
+[node name="Weapon" type="Sprite" parent="." groups=["weapon"]]
 position = Vector2( -22, 9 )
 scale = Vector2( 3, 3 )
 texture = ExtResource( 4 )
