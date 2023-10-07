@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://MainScene.gd" type="Script" id=1]
 [ext_resource path="res://common/GlobalInput.gd" type="Script" id=2]
@@ -8,9 +8,12 @@
 [ext_resource path="res://hud/exit_high.png" type="Texture" id=6]
 [ext_resource path="res://hud/HUD.tscn" type="PackedScene" id=7]
 [ext_resource path="res://hud/Monocraft.ttf" type="DynamicFontData" id=8]
+[ext_resource path="res://hud/logo.png" type="Texture" id=9]
 
 [sub_resource type="DynamicFont" id=1]
 size = 18
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 8 )
 
 [node name="MainScene" type="Control"]
@@ -25,11 +28,16 @@ visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 
+[node name="ColorRect" type="ColorRect" parent="Menu"]
+margin_right = 1024.0
+margin_bottom = 599.0
+color = Color( 0.101961, 0.0980392, 0.196078, 1 )
+
 [node name="Exit" type="TextureButton" parent="Menu"]
 margin_left = 414.0
-margin_top = 326.0
+margin_top = 414.0
 margin_right = 591.0
-margin_bottom = 369.0
+margin_bottom = 457.0
 texture_normal = ExtResource( 5 )
 texture_pressed = ExtResource( 6 )
 texture_hover = ExtResource( 6 )
@@ -38,10 +46,10 @@ expand = true
 stretch_mode = 5
 
 [node name="Start" type="TextureButton" parent="Menu"]
-margin_left = 415.0
-margin_top = 276.0
-margin_right = 592.0
-margin_bottom = 319.0
+margin_left = 414.0
+margin_top = 364.0
+margin_right = 591.0
+margin_bottom = 407.0
 texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 4 )
 texture_hover = ExtResource( 4 )
@@ -57,6 +65,14 @@ margin_bottom = 602.0
 custom_fonts/font = SubResource( 1 )
 text = "bigasdev @ mandinhart"
 align = 1
+
+[node name="TextureRect" type="TextureRect" parent="Menu"]
+margin_left = 327.0
+margin_top = 96.0
+margin_right = 448.0
+margin_bottom = 148.0
+rect_scale = Vector2( 3, 3 )
+texture = ExtResource( 9 )
 
 [node name="GlobalInput" type="Node" parent="."]
 script = ExtResource( 2 )
