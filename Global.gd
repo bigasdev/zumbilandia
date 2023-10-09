@@ -25,6 +25,9 @@ var round_zombie_damage_multiplier : int = 0
 var round_zombie_coins_multiplier : int = 0
 var weapon_number : int = 0
 
+var kills_needed_to_chest : int = 25
+var current_kills : int = 0
+
 var rng = RandomNumberGenerator.new()
 
 # Declare member variables here. Examples:
@@ -60,6 +63,12 @@ func damage_player(damage) -> void:
 	hud.update_hud()
 	if player_health <= 0:
 		game_over()
+
+func zombie_killed(pos:Vector2=Vector2.ZERO) -> void:
+	current_kills += 1
+	if current_kills % kills_needed_to_chest == 0:
+		spawner.spawn_chest(pos)
+	hud.update_hud()
 
 # Function for the game over
 func game_over():

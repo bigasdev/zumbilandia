@@ -53,6 +53,7 @@ func kill(drop:bool) -> void:
 
 	die_sound.play()
 	killed = true
+	Global.zombie_killed(self.global_position)
 	if Global.closest_enemy == self:
 		Global.closest_enemy = null
 	if drop:

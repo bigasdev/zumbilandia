@@ -71,19 +71,19 @@ func set_damage(damage):
 # Function that will shoot the bullet
 func shoot(is_player:=true):
 	if !can_shoot: return
-
-	var bullet_instance = bullet.instance()
-	if is_player: sound.play()
-
 	print_debug(get_parent())
-	
+		
 	if is_player_weapon:
 		Global.player_ammo -= 1
-		
+			
 		if Global.player_ammo <= 0:
 			return
 		Global.hud.update_hud()
 		pass
+
+	var bullet_instance = bullet.instance()
+	if is_player: sound.play()
+
 	
 	get_node("/root/MainScene").add_child(bullet_instance)
 	if is_player : bullet_instance.direction = (get_global_mouse_position() - Global.player.global_position).normalized()

@@ -20,6 +20,7 @@ onready var night_timer = $NightTimer
 
 # Resources 
 onready var rescue = preload("res://characters/Rescue.tscn")
+onready var chest = preload("res://common/Breakable.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -74,3 +75,9 @@ func _on_NightTimer_timeout():
 	if zombie_timer.wait_time >= 0.2 : zombie_timer.wait_time -= 0.1
 	StateManager.set_update()
 	pass # Replace with function body.
+
+func spawn_chest(pos:Vector2=Vector2.ZERO) -> void:
+	var chest_instance = chest.instance()
+	chest_instance.position = pos
+	add_child(chest_instance)
+	pass
