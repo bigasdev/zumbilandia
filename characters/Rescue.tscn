@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://characters/Rescue.gd" type="Script" id=1]
+[ext_resource path="res://characters/NpcBlack.tscn" type="PackedScene" id=2]
 [ext_resource path="res://enemies/Zombie.tscn" type="PackedScene" id=3]
 [ext_resource path="res://characters/Npc.tscn" type="PackedScene" id=4]
 
@@ -31,6 +32,10 @@ position = Vector2( -58, 29 )
 staticPos = true
 
 [node name="Npc" parent="." instance=ExtResource( 4 )]
+visible = false
+
+[node name="NpcBlack" parent="." instance=ExtResource( 2 )]
+visible = false
 
 [node name="Zombie2" parent="." instance=ExtResource( 3 )]
 position = Vector2( -1, 62 )

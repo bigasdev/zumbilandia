@@ -26,14 +26,18 @@ func _ready():
 func _moveInput():
 	velocity = Vector2()
 	if Input.is_action_pressed("move_right"):
+		if position.x >= Global.BORDER_X : return
 		sprite.flip_h = true
 		velocity.x += 1
 	if Input.is_action_pressed("move_left"):
+		if position.x <= -Global.BORDER_X : return
 		sprite.flip_h = false
 		velocity.x -= 1
 	if Input.is_action_pressed("move_up"):
+		if position.y <= -Global.BORDER_Y : return
 		velocity.y -= 1
 	if Input.is_action_pressed("move_down"):
+		if position.y >= Global.BORDER_Y : return
 		velocity.y += 1
 	velocity = velocity.normalized() * (moveSpeed + PowerupManager.speed_powerup)
 	if velocity.x != 0 || velocity.y != 0:

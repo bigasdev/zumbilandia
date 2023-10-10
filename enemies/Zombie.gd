@@ -7,6 +7,7 @@ extends KinematicBody2D
 
 export var offset : Vector2
 export var staticPos : bool
+export var canRun : bool = true
 
 export var health : int = 10
 export var moveSpeed := 450
@@ -69,9 +70,10 @@ func chase(player : Node2D) -> void:
 	if StateManager.game_running() == false:
 		return
 
-	if staticPos:
+	if staticPos || !canRun:
 		return
 
+	animated_sprite.play("walking")
 	var dir = (player.position - position).normalized()
 	var velocity = dir * moveSpeed
 	move_and_slide(velocity)
@@ -82,6 +84,11 @@ func player_on_range(dist:float) -> bool:
 		return true
 	else:
 		return false
+
+# Function to attack the player, each zombie will have a different
+func attack() -> void:
+	Global.damage_player(damage)
+	kill(false)
 
 # Check if this zombie is the same as the global closest enemy
 func is_closest_enemy() -> bool:
@@ -112,8 +119,7 @@ func _process(delta):
 	if StateManager.game_running():
 		chase(Global.player)
 		if player_on_range(damage_dist) && !staticPos:
-			Global.damage_player(damage)
-			kill(false)
+			attack()
 	pass
 
 

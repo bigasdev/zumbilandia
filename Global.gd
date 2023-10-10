@@ -39,6 +39,22 @@ var rng = RandomNumberGenerator.new()
 func _ready():
 	pass # Replace with function body.
 
+func reset():
+	# Reset the variables
+	player_health = 100
+	player_ammo = 200
+	player_coins = 0
+	round_number = 0
+	round_zombie_multiplier = 1
+	round_zombie_speed_multiplier = 0
+	round_zombie_health_multiplier = 0
+	round_zombie_damage_multiplier = 0
+	round_zombie_coins_multiplier = 0
+	weapon_number = 0
+	current_kills = 0
+	closest_enemy = null
+	hud.update_hud()
+
 func night_time():
 	print_debug("its night time!")
 	round_number += 1

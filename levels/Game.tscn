@@ -53,7 +53,7 @@ autostart = true
 wait_time = 5.0
 autostart = true
 
-[node name="NightTimer" type="Timer" parent="Spawner"]
+[node name="NightTimer" type="Timer" parent="Spawner" groups=["night_timer"]]
 wait_time = 25.0
 one_shot = true
 

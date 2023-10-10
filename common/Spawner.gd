@@ -22,6 +22,12 @@ onready var night_timer = $NightTimer
 onready var rescue = preload("res://characters/Rescue.tscn")
 onready var chest = preload("res://common/Breakable.tscn")
 
+# Zombies
+onready var shooter = preload("res://enemies/Atirador.tscn")
+onready var runner = preload("res://enemies/Corredor.tscn")
+onready var tanker = preload("res://enemies/Tanker.tscn")
+onready var zombie = preload("res://enemies/Zombie.tscn")
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Global.spawner = self
@@ -38,9 +44,20 @@ func _on_Timer_timeout():
 	
 	var i = 0
 	while i < Global.round_zombie_multiplier:
-		var zombie = preload("res://enemies/Zombie.tscn")
-		add_child(zombie.instance())
-		i+=1
+		# Get a random zombie between the shooter, runner, tanker and zombie
+		var zombie_instance
+		var zombie_type = randi() % 4
+		if zombie_type == 0:
+			zombie_instance = shooter.instance()
+		elif zombie_type == 1:
+			zombie_instance = runner.instance()
+		elif zombie_type == 2:
+			zombie_instance = tanker.instance()
+		else:
+			zombie_instance = zombie.instance()
+		print_debug("zombie type: " + str(zombie_type) + "instance: " + str(zombie_instance))
+		add_child(zombie_instance)
+		i += 1
 	pass # Replace with function body.
 
 

@@ -41,24 +41,31 @@ func change_weapon(weapon_type) -> void:
 	match weapon_type:
 		0:
 			weapon_texture = pistol_sprite
+			damage = 1
 		1:
 			cooldown = .5
 			weapon_texture = revolver_sprite
+			damage = 2
 		2:
 			cooldown = .75
 			weapon_texture = shotgun_sprite
+			damage = 4
 		3:
 			cooldown = .125
 			weapon_texture = smg_sprite
+			damage = 1
 		4:
 			cooldown = .2
 			weapon_texture = ak_sprite
+			damage = 3
 		5:
 			cooldown = .15
 			weapon_texture = aug_sprite
+			damage = 2
 		6:
 			cooldown = .18
 			weapon_texture = negev_sprite
+			damage = 4
 
 	texture = weapon_texture
 		
@@ -108,7 +115,6 @@ func _rotate_mouse():
 	else:
 		z_index = 2
 		pass
-	print_debug(z_index)
 	global_transform.origin = mouse_pos
 	if mouse_dir.x <= 0:
 		flip_v = true

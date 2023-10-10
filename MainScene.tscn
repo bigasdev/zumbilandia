@@ -77,4 +77,5 @@ texture = ExtResource( 9 )
 [node name="GlobalInput" type="Node" parent="."]
 script = ExtResource( 2 )
 
+[connection signal="pressed" from="Menu/Exit" to="." method="_on_Exit_pressed"]
 [connection signal="pressed" from="Menu/Start" to="." method="_on_Start_pressed"]
