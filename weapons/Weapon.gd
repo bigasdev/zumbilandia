@@ -161,7 +161,10 @@ func _rotate_enemy():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if get_parent().following == null && !is_player_weapon: return
+	if get_parent().following == null && !is_player_weapon : return
+
+
+	if !StateManager.game_running() : return
 
 	if !is_player_weapon:
 		_rotate_enemy()

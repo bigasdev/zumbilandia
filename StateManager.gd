@@ -14,13 +14,11 @@ func change_state(state):
 func set_update() -> void:
 	current_state = States.UPDATE
 
-func game_running():
-	return current_state == States.UPDATE || States.UPDATE_IDLE
-	pass
+func game_running() -> bool:
+	return current_state == 1
 
 func game_can_spawn() -> bool:
 	return current_state == States.UPDATE
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+
