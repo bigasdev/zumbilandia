@@ -34,7 +34,6 @@ func _change_counter():
 		# get node with the group "night_timer"
 		var night_timer = get_tree().get_nodes_in_group("night_timer")
 		if night_timer : 
-			print_debug(night_timer)
 			counter.text = String(night_timer[0].time_left).pad_decimals(0)
 	pass
 # Called every frame. 'delta' is the elapsed time since the previous frame.

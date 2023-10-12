@@ -17,14 +17,18 @@ export var closest_dist := 50
 export var damage_dist := 30
 
 # Components
+onready var shoot_pos = $ShootPos
+onready var shoot_timer = $Timers/Shoot
 onready var animation = $AnimationPlayer
 onready var animated_sprite = $Sprite
 onready var focus = $Focus
 onready var coin = preload("res://common/Coin.tscn")
 onready var die_sound = $Die_Sound
+onready var bullet = preload("res://weapons/BulletZombie.tscn")
 
 var killed := false
 var spawned := false
+var can_shoot := false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -87,8 +91,15 @@ func player_on_range(dist:float) -> bool:
 
 # Function to attack the player, each zombie will have a different
 func attack() -> void:
-	Global.damage_player(damage)
-	kill(false)
+	if can_shoot : 
+		shoot()
+		can_shoot = false
+	pass
+
+func shoot() -> void:
+	var bullet_instance = bullet.instance()
+	bullet_instance.position = shoot_pos.global_position
+	get_node("/root/MainScene").add_child(bullet_instance)
 
 # Check if this zombie is the same as the global closest enemy
 func is_closest_enemy() -> bool:
@@ -124,4 +135,9 @@ func _process(delta):
 
 func _on_Die_Sound_finished():
 	queue_free()
+	pass # Replace with function body.
+
+
+func _on_Shoot_timeout():
+	can_shoot = true
 	pass # Replace with function body.

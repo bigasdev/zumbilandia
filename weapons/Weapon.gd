@@ -78,7 +78,6 @@ func set_damage(damage):
 # Function that will shoot the bullet
 func shoot(is_player:=true):
 	if !can_shoot: return
-	print_debug(get_parent())
 		
 	if is_player_weapon:
 		Global.player_ammo -= 1
@@ -175,7 +174,6 @@ func _process(delta):
 
 
 func _on_Timer_timeout():
-	print_debug("finished")
 	can_shoot = true
 	pass # Replace with function body.
 

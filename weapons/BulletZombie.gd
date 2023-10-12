@@ -18,6 +18,7 @@ var life_time = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	direction = (Global.player.global_position - global_position).normalized()
 	pass # Replace with function body.
 
 func _move_bullet(delta):
@@ -36,23 +37,15 @@ func _process(delta) -> void:
 		queue_free()
 
 func _on_Bullet_body_entered(body):
-	if body.is_in_group("Zombie"):
+	print_debug(body)
+	if body.is_in_group("Player"):
 		# Instantiate the hit effect
 		var hit_effect = hit_particle.instance()
 		body.add_child(hit_effect)
 		hit_effect.global_position = global_position
 		hit_effect.play("idle")
 
-		body.damage(Global.player.weapon.damage + PowerupManager.power_powerup)
-		queue_free()
-		pass
-	if body.is_in_group("Breakable"):
-		var hit_effect = hit_particle.instance()
-		hit_effect.position = Vector2.ZERO
-		body.add_child(hit_effect)
-		hit_effect.play("idle")
-
-		body.destroy()
+		Global.damage_player(5)
 		queue_free()
 		pass
 	pass # Replace with function body.

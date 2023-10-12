@@ -56,7 +56,6 @@ func reset():
 	hud.update_hud()
 
 func night_time():
-	print_debug("its night time!")
 	round_number += 1
 	if round_number % 2 == 0:
 		round_zombie_multiplier += 1

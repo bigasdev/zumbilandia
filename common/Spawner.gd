@@ -55,7 +55,6 @@ func _on_Timer_timeout():
 			zombie_instance = tanker.instance()
 		else:
 			zombie_instance = zombie.instance()
-		print_debug("zombie type: " + str(zombie_type) + "instance: " + str(zombie_instance))
 		add_child(zombie_instance)
 		i += 1
 	pass # Replace with function body.
@@ -83,7 +82,6 @@ func spawn_rescue():
 
 
 func _on_NightTimer_timeout():
-	print_debug("Reseting the update method")
 	Global.main_scene.counter_timer.start()
 	Global.round_zombie_coins_multiplier += coins_to_drop
 	Global.round_zombie_damage_multiplier += damage
