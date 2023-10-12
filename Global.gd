@@ -12,8 +12,8 @@ enum weapons {pistol, revolver, smg, ak, aug, negev}
 
 var current_weapon = weapons.pistol
 
-const BORDER_X : int = 1500
-const BORDER_Y : int = 1500
+const BORDER_X : int = 2500
+const BORDER_Y : int = 2500
 
 var player_health : int = 100
 var player_ammo : int = 200
