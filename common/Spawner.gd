@@ -8,6 +8,7 @@ extends Node
 # The object we need to instante
 export var night_time_amount = 25
 export var rescue_offset := Vector2(0,0)
+export var vendor_offset := Vector2(0,0)
 # Modifiers
 export var zombie_speed := 15
 export var coins_to_drop := 1
@@ -20,6 +21,7 @@ onready var night_timer = $NightTimer
 
 # Resources 
 onready var rescue = preload("res://characters/Rescue.tscn")
+onready var vendor = preload("res://characters/Vendor.tscn")
 onready var chest = preload("res://common/Breakable.tscn")
 
 # Zombies
@@ -27,6 +29,8 @@ onready var shooter = preload("res://enemies/Atirador.tscn")
 onready var runner = preload("res://enemies/Corredor.tscn")
 onready var tanker = preload("res://enemies/Tanker.tscn")
 onready var zombie = preload("res://enemies/Zombie.tscn")
+
+var vendor_instance
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -65,6 +69,7 @@ func night_time():
 	StateManager.change_state(StateManager.States.UPDATE_IDLE)
 	night_timer.start()
 	spawn_rescue()
+	spawn_vendor()
 	while i < night_time_amount:
 		var zombie = preload("res://enemies/Zombie.tscn")
 		add_child(zombie.instance())
@@ -80,6 +85,13 @@ func spawn_rescue():
 	add_child(rescue_instance)
 	pass
 
+func spawn_vendor():
+	var offset = Vector2(rand_range(-vendor_offset.x, vendor_offset.x), rand_range(-vendor_offset.y, vendor_offset.y))
+	vendor_instance = vendor.instance()
+	vendor_instance.position = Global.get_entity_rnd_radius(Global.player, Vector2.ZERO, offset)
+	add_child(vendor_instance)
+	Global.vendor = vendor_instance
+	pass
 
 func _on_NightTimer_timeout():
 	Global.main_scene.counter_timer.start()
@@ -87,6 +99,9 @@ func _on_NightTimer_timeout():
 	Global.round_zombie_damage_multiplier += damage
 	Global.round_zombie_health_multiplier += health
 	Global.round_zombie_speed_multiplier += zombie_speed
+	# Get the vendor node and queue free it
+	Global.vendor = null
+	vendor_instance.queue_free()
 	if zombie_timer.wait_time >= 0.2 : zombie_timer.wait_time -= 0.1
 	StateManager.set_update()
 	pass # Replace with function body.
