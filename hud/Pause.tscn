@@ -1,7 +1,11 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://hud/Monocraft.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://hud/Pause.gd" type="Script" id=2]
+[ext_resource path="res://hud/ok.png" type="Texture" id=3]
+[ext_resource path="res://hud/ok_high.png" type="Texture" id=4]
+[ext_resource path="res://hud/no.png" type="Texture" id=5]
+[ext_resource path="res://hud/no_high.png" type="Texture" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 size = 18
@@ -10,6 +14,10 @@ outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=2]
+size = 18
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=3]
 size = 18
 font_data = ExtResource( 1 )
 
@@ -52,13 +60,71 @@ custom_fonts/font = SubResource( 2 )
 text = "SETTINGS"
 
 [node name="Exit" type="Button" parent="."]
-margin_left = 467.0
+margin_left = 463.0
 margin_top = 354.0
-margin_right = 551.0
+margin_right = 547.0
 margin_bottom = 378.0
 rect_pivot_offset = Vector2( -407, 12 )
 custom_fonts/font = SubResource( 2 )
 text = "EXIT"
 
+[node name="SettingsMenu" type="Control" parent="."]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="PanelContainer" type="PanelContainer" parent="SettingsMenu"]
+margin_left = 341.0
+margin_top = 167.0
+margin_right = 690.0
+margin_bottom = 455.0
+
+[node name="HSlider" type="HSlider" parent="SettingsMenu"]
+margin_left = 348.0
+margin_top = 289.0
+margin_right = 683.0
+margin_bottom = 305.0
+min_value = -50.0
+max_value = 0.0
+
+[node name="Label" type="Label" parent="SettingsMenu"]
+margin_left = 348.0
+margin_top = 270.0
+margin_right = 683.0
+margin_bottom = 288.0
+custom_fonts/font = SubResource( 3 )
+text = "Volume"
+align = 1
+
+[node name="Ok" type="TextureButton" parent="SettingsMenu"]
+margin_left = 494.0
+margin_top = 407.0
+margin_right = 534.0
+margin_bottom = 447.0
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 4 )
+texture_hover = ExtResource( 4 )
+texture_disabled = ExtResource( 3 )
+texture_focused = ExtResource( 4 )
+expand = true
+
+[node name="Esc" type="TextureButton" parent="SettingsMenu"]
+margin_left = 661.0
+margin_top = 158.0
+margin_right = 701.0
+margin_bottom = 198.0
+texture_normal = ExtResource( 5 )
+texture_pressed = ExtResource( 6 )
+texture_hover = ExtResource( 6 )
+texture_disabled = ExtResource( 6 )
+texture_focused = ExtResource( 6 )
+expand = true
+
 [connection signal="pressed" from="Resume" to="." method="_on_Resume_pressed"]
+[connection signal="pressed" from="Settings" to="." method="_on_Settings_pressed"]
 [connection signal="pressed" from="Exit" to="." method="_on_Exit_pressed"]
+[connection signal="changed" from="SettingsMenu/HSlider" to="." method="_on_HSlider_changed"]
+[connection signal="drag_ended" from="SettingsMenu/HSlider" to="." method="_on_HSlider_drag_ended"]
+[connection signal="value_changed" from="SettingsMenu/HSlider" to="." method="_on_HSlider_value_changed"]
+[connection signal="pressed" from="SettingsMenu/Ok" to="." method="_on_Ok_pressed"]
+[connection signal="pressed" from="SettingsMenu/Esc" to="." method="_on_Esc_pressed"]

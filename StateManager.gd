@@ -12,10 +12,10 @@ func change_state(state):
 	pass
 	
 func set_update() -> void:
-	current_state = States.UPDATE
+	current_state = States.UPDATE 
 
 func game_running() -> bool:
-	return current_state == 1
+	return current_state == 1 || current_state == 2
 
 func game_can_spawn() -> bool:
 	return current_state == States.UPDATE
