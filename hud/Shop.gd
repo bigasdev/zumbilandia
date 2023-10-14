@@ -7,11 +7,17 @@ extends CanvasLayer
 # Variables
 export var ammo_value := 100
 export var health_value := 200
+onready var weapon_icon = $Weapon/Icon
+onready var weapon_label = $Weapon/Price
 var weapon_value : int = 500
+
+# array of weapon sprites
+export var weapon_sprites = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	StateManager.change_state(StateManager.States.PAUSE)
+	if weapon_sprites.size() < Global.weapon_number + 1 : weapon_icon.texture = weapon_sprites[Global.weapon_number+1]
 	pass # Replace with function body.
 
 # Function that will check if the Global.player_coins can afford a value
@@ -29,6 +35,17 @@ func check_coins(value):
 func buy_ammo() -> void:
 	if check_coins(ammo_value):
 		Global.player_ammo += 50
+		Global.hud.update_hud()
+	else:
+		print("Not enough coins")
+
+func buy_weapon() -> void:
+	if Global.weapon_number >= 6 : return
+	if check_coins(weapon_value):
+		Global.next_weapon()
+		weapon_icon.texture = weapon_sprites[Global.weapon_number+1]
+		weapon_value += 200
+		weapon_label.text = str(weapon_value)
 		Global.hud.update_hud()
 	else:
 		print("Not enough coins")
@@ -63,4 +80,9 @@ func _on_Health_Button_pressed():
 
 func _on_Ammo_Button_pressed():
 	buy_ammo()
+	pass # Replace with function body.
+
+
+func _on_Weapon_Button_pressed():
+	buy_weapon()
 	pass # Replace with function body.

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://hud/Shop.png" type="Texture" id=1]
 [ext_resource path="res://hud/no.png" type="Texture" id=2]
@@ -9,6 +9,12 @@
 [ext_resource path="res://hud/Monocraft.ttf" type="DynamicFontData" id=7]
 [ext_resource path="res://powerups/Coin.png" type="Texture" id=8]
 [ext_resource path="res://hud/Shop.gd" type="Script" id=9]
+[ext_resource path="res://weapons/sprites/6AUG_Rifle.png" type="Texture" id=10]
+[ext_resource path="res://weapons/sprites/3Sawed-Off_Escopeta.png" type="Texture" id=11]
+[ext_resource path="res://weapons/sprites/pistol.png" type="Texture" id=12]
+[ext_resource path="res://weapons/sprites/5AK-47_Rifle.png" type="Texture" id=13]
+[ext_resource path="res://weapons/sprites/7Negev_Metralhadora.png" type="Texture" id=14]
+[ext_resource path="res://weapons/sprites/4MP7_Submetralhadora.png" type="Texture" id=15]
 
 [sub_resource type="DynamicFont" id=1]
 size = 18
@@ -20,6 +26,7 @@ font_data = ExtResource( 7 )
 
 [node name="Shop" type="CanvasLayer"]
 script = ExtResource( 9 )
+weapon_sprites = [ ExtResource( 12 ), ExtResource( 4 ), ExtResource( 11 ), ExtResource( 15 ), ExtResource( 13 ), ExtResource( 10 ), ExtResource( 14 ), ExtResource( 14 ) ]
 
 [node name="BG" type="ColorRect" parent="."]
 margin_left = -10.0
@@ -91,7 +98,7 @@ margin_bottom = 39.0
 rect_scale = Vector2( 2, 2 )
 texture = ExtResource( 8 )
 
-[node name="Button" type="Button" parent="Weapon"]
+[node name="Weapon_Button" type="Button" parent="Weapon"]
 margin_left = 20.0
 margin_top = 108.0
 margin_right = 68.0
@@ -199,5 +206,6 @@ custom_fonts/font = SubResource( 2 )
 text = "BUY"
 
 [connection signal="pressed" from="Esc" to="." method="_on_Esc_pressed"]
+[connection signal="pressed" from="Weapon/Weapon_Button" to="." method="_on_Weapon_Button_pressed"]
 [connection signal="pressed" from="Ammo/Ammo_Button" to="." method="_on_Ammo_Button_pressed"]
 [connection signal="pressed" from="Health/Health_Button" to="." method="_on_Health_Button_pressed"]

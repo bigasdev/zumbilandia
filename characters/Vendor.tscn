@@ -51,7 +51,7 @@ can_blink = true
 scale = Vector2( 3, 3 )
 frames = SubResource( 8 )
 animation = "idle"
-frame = 4
+frame = 3
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
