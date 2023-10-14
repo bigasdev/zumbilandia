@@ -6,7 +6,7 @@ var player : KinematicBody2D
 var spawner : Node
 var hud : CanvasLayer
 var closest_enemy : KinematicBody2D
-var vendor : KinematicBody2D
+var vendor : Area2D
 var volume : float = 100
 
 enum weapons {pistol, revolver, smg, ak, aug, negev}

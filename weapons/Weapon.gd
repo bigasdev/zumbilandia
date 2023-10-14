@@ -80,10 +80,9 @@ func shoot(is_player:=true):
 	if !can_shoot: return
 		
 	if is_player_weapon:
-		Global.player_ammo -= 1
-			
 		if Global.player_ammo <= 0:
 			return
+		Global.player_ammo -= 1	
 		Global.hud.update_hud()
 		pass
 
