@@ -18,6 +18,8 @@ export var weapon_sprites = []
 func _ready():
 	StateManager.change_state(StateManager.States.PAUSE)
 	if weapon_sprites.size() < Global.weapon_number + 1 : weapon_icon.texture = weapon_sprites[Global.weapon_number+1]
+	weapon_value += (200*Global.weapon_number)
+	weapon_label.text = str(weapon_value)
 	pass # Replace with function body.
 
 # Function that will check if the Global.player_coins can afford a value
