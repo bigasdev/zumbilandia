@@ -29,9 +29,9 @@ font_data = ExtResource( 1 )
 script = ExtResource( 4 )
 
 [node name="Main_HUD" type="Control" parent="."]
-margin_left = 879.0
+margin_left = 457.0
 margin_top = 4.0
-margin_right = 919.0
+margin_right = 497.0
 margin_bottom = 44.0
 
 [node name="BG" type="TextureRect" parent="Main_HUD"]

@@ -3,6 +3,8 @@ extends Control
 onready var hud : CanvasLayer = $HUD
 onready var menu : Control = $Menu
 onready var counter : Label = $HUD/Main_HUD/Counter
+onready var tutorial : Control = $Tutorial
+onready var credits : Control = $Credits
 onready var counter_timer : Timer = $HUD/Main_HUD/Counter/Timer
 
 
@@ -50,6 +52,15 @@ func _on_Start_pressed():
 	_load_game()
 	pass # Replace with function body.
 
+func _on_Tutorial_pressed():
+	_change_main_elements(false)
+	tutorial.visible = true
+	pass # Replace with function body.
+
+func _on_Credits_pressed():
+	_change_main_elements(false)
+	credits.visible = true
+	pass # Replace with function body.
 
 func _on_Pause_pressed():
 	StateManager.change_state(StateManager.States.PAUSE)
@@ -67,4 +78,25 @@ func _on_Timer_timeout():
 func _on_Exit_pressed():
 	#exit the game:
 	get_tree().quit()
+	pass # Replace with function body.
+
+
+func _on_TutorialExit_pressed():
+	_change_main_elements(true)
+	tutorial.visible = false
+	pass # Replace with function body.
+
+
+func _on_TutorialPlay_pressed():
+	_change_main_elements(false)
+	hud.visible = true
+	tutorial.visible = false
+	Global.reset()
+	_load_game()
+	pass # Replace with function body.
+
+
+func _on_CreditsExit_pressed():
+	_change_main_elements(true)
+	credits.visible = false
 	pass # Replace with function body.

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://MainScene.gd" type="Script" id=1]
 [ext_resource path="res://common/GlobalInput.gd" type="Script" id=2]
@@ -9,6 +9,12 @@
 [ext_resource path="res://hud/HUD.tscn" type="PackedScene" id=7]
 [ext_resource path="res://hud/Monocraft.ttf" type="DynamicFontData" id=8]
 [ext_resource path="res://hud/logo.png" type="Texture" id=9]
+[ext_resource path="res://hud/creditos.png" type="Texture" id=10]
+[ext_resource path="res://hud/tutorial.png" type="Texture" id=11]
+[ext_resource path="res://hud/creditos_high.png" type="Texture" id=12]
+[ext_resource path="res://hud/tutorial_high.png" type="Texture" id=13]
+[ext_resource path="res://hud/Tutorial1.png" type="Texture" id=14]
+[ext_resource path="res://hud/creditos2.png" type="Texture" id=15]
 
 [sub_resource type="DynamicFont" id=1]
 size = 18
@@ -34,10 +40,10 @@ margin_bottom = 599.0
 color = Color( 0.101961, 0.0980392, 0.196078, 1 )
 
 [node name="Exit" type="TextureButton" parent="Menu"]
-margin_left = 414.0
-margin_top = 414.0
-margin_right = 591.0
-margin_bottom = 457.0
+margin_left = 413.0
+margin_top = 441.0
+margin_right = 590.0
+margin_bottom = 484.0
 texture_normal = ExtResource( 5 )
 texture_pressed = ExtResource( 6 )
 texture_hover = ExtResource( 6 )
@@ -45,11 +51,35 @@ texture_focused = ExtResource( 6 )
 expand = true
 stretch_mode = 5
 
+[node name="Credits" type="TextureButton" parent="Menu"]
+margin_left = 413.0
+margin_top = 400.0
+margin_right = 590.0
+margin_bottom = 443.0
+texture_normal = ExtResource( 10 )
+texture_pressed = ExtResource( 12 )
+texture_hover = ExtResource( 12 )
+texture_focused = ExtResource( 12 )
+expand = true
+stretch_mode = 5
+
+[node name="Tutorial" type="TextureButton" parent="Menu"]
+margin_left = 413.0
+margin_top = 357.0
+margin_right = 590.0
+margin_bottom = 400.0
+texture_normal = ExtResource( 11 )
+texture_pressed = ExtResource( 13 )
+texture_hover = ExtResource( 13 )
+texture_focused = ExtResource( 13 )
+expand = true
+stretch_mode = 5
+
 [node name="Start" type="TextureButton" parent="Menu"]
-margin_left = 414.0
-margin_top = 364.0
-margin_right = 591.0
-margin_bottom = 407.0
+margin_left = 413.0
+margin_top = 313.0
+margin_right = 590.0
+margin_bottom = 356.0
 texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 4 )
 texture_hover = ExtResource( 4 )
@@ -58,12 +88,12 @@ expand = true
 stretch_mode = 5
 
 [node name="Label" type="Label" parent="Menu"]
-margin_left = 316.0
-margin_top = 575.0
-margin_right = 694.0
-margin_bottom = 602.0
+margin_left = 294.0
+margin_top = 569.0
+margin_right = 726.0
+margin_bottom = 596.0
 custom_fonts/font = SubResource( 1 )
-text = "bigasdev @ mandinhart"
+text = "bigasdev @ mandinhart @ amandcamposa"
 align = 1
 
 [node name="TextureRect" type="TextureRect" parent="Menu"]
@@ -77,5 +107,83 @@ texture = ExtResource( 9 )
 [node name="GlobalInput" type="Node" parent="."]
 script = ExtResource( 2 )
 
+[node name="Tutorial" type="Control" parent="."]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="ColorRect2" type="ColorRect" parent="Tutorial"]
+margin_right = 1024.0
+margin_bottom = 599.0
+color = Color( 0.101961, 0.0980392, 0.196078, 1 )
+
+[node name="TextureRect" type="TextureRect" parent="Tutorial"]
+margin_left = 32.0
+margin_top = 27.0
+margin_right = 1952.0
+margin_bottom = 1107.0
+rect_scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 14 )
+
+[node name="TutorialExit" type="TextureButton" parent="Tutorial"]
+margin_left = 870.0
+margin_top = 6.0
+margin_right = 1047.0
+margin_bottom = 49.0
+texture_normal = ExtResource( 5 )
+texture_pressed = ExtResource( 6 )
+texture_hover = ExtResource( 6 )
+texture_focused = ExtResource( 6 )
+expand = true
+stretch_mode = 5
+
+[node name="TutorialPlay" type="TextureButton" parent="Tutorial"]
+margin_left = 870.0
+margin_top = 552.0
+margin_right = 1047.0
+margin_bottom = 595.0
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 4 )
+texture_hover = ExtResource( 4 )
+texture_focused = ExtResource( 4 )
+expand = true
+stretch_mode = 5
+
+[node name="Credits" type="Control" parent="."]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="ColorRect3" type="ColorRect" parent="Credits"]
+margin_right = 1024.0
+margin_bottom = 599.0
+color = Color( 0.101961, 0.0980392, 0.196078, 1 )
+
+[node name="TextureRect" type="TextureRect" parent="Credits"]
+margin_left = 31.0
+margin_top = 8.0
+margin_right = 1951.0
+margin_bottom = 1088.0
+rect_scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 15 )
+expand = true
+
+[node name="CreditsExit" type="TextureButton" parent="Credits"]
+margin_left = 872.0
+margin_top = 6.0
+margin_right = 1049.0
+margin_bottom = 49.0
+texture_normal = ExtResource( 5 )
+texture_pressed = ExtResource( 6 )
+texture_hover = ExtResource( 6 )
+texture_focused = ExtResource( 6 )
+expand = true
+stretch_mode = 5
+
 [connection signal="pressed" from="Menu/Exit" to="." method="_on_Exit_pressed"]
+[connection signal="pressed" from="Menu/Credits" to="." method="_on_Credits_pressed"]
+[connection signal="pressed" from="Menu/Tutorial" to="." method="_on_Tutorial_pressed"]
 [connection signal="pressed" from="Menu/Start" to="." method="_on_Start_pressed"]
+[connection signal="pressed" from="Tutorial/TutorialExit" to="." method="_on_TutorialExit_pressed"]
+[connection signal="pressed" from="Tutorial/TutorialPlay" to="." method="_on_TutorialPlay_pressed"]
+[connection signal="pressed" from="Credits/CreditsExit" to="." method="_on_CreditsExit_pressed"]
